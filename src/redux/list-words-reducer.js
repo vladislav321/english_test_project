@@ -1,5 +1,5 @@
 
-
+const CHOOSE_TOPIC = "CHOOSE_TOPIC";
 
 let initState = {
     words: [],
