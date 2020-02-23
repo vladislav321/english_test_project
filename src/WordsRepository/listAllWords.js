@@ -1,22 +1,24 @@
 
 let listWords = new Array();
 
-export const SetListWords = (list) => {
-    if(!list) return;
-    
-    if(listWords.length === 0)
+export const WordsRepository = {
+    setList(list){
+        if(!list) return;
+        if(listWords.length === 0) listWords = list;
+    },
+    getList()
     {
-        listWords = list;
+        return listWords;
+    },
+    getListByLessons(lessons){
+        if(!lessons) return listWords;
+
+        let list = listWords.filter(l => l.lessons === lessons);
+        return list;
+    },
+    isListEmpty()
+    {
+       return listWords === 0 ? true : false;
     }
 }
 
-export const GetListWords = () => {
-    return listWords;
-}
-
-export const GetListWordsByLessons = (lessons) => {
-    if(!lessons) return listWords;
-
-    let list = listWords.filter(l => l.lessons === lessons);
-    return list;
-}
