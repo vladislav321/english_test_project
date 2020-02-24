@@ -5,6 +5,7 @@ import WordsRepositorySingelton from './../WordsRepository/listAllWords';
 const CHOOSE_TOPIC = "CHOOSE_TOPIC";
 const SET_LIST_WORDS = "SET_LIST_WORDS";
 const GET_LIST_WORDS = "GET_LIST_WORDS";
+const GET_LIST_LESSONS = "GET_LIST_LESSONS";
 
 let initState = {
     words: [],
@@ -24,6 +25,9 @@ const ListWordsReducer = (state = initState, action) => {
         case CHOOSE_TOPIC:
             return {...state, words: WordsRepositorySingelton.getInstance().getListByLessons(action.lessons)}
 
+        case GET_LIST_LESSONS:
+            return {...state, words: WordsRepositorySingelton.getInstance().getListLessons()}
+        
         default: return state;
     }
 }
@@ -31,7 +35,8 @@ const ListWordsReducer = (state = initState, action) => {
 
 export const setList = (list) => ({type: SET_LIST_WORDS, list});
 export const getList = () => ({type: GET_LIST_WORDS});
-export const chooseTopic = (lessons) => ({type: CHOOSE_TOPIC, lessons})
+export const chooseTopic = (lessons) => ({type: CHOOSE_TOPIC, lessons});
+export const getListLessons = () => ({type: GET_LIST_LESSONS});
 
 export const getListWords = () => (dispatch) => {
 

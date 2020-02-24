@@ -4,6 +4,7 @@ import ListWordsContainer from './Components/ListWords/ListWordsContainer';
 import Header from './Components/Header/Header';
 import Navbar from './Components/NavBar/Navbar';
 import { Route } from 'react-router-dom';
+import ChooseLessonsContainer from './Components/ChooseLessons/ChooseLessonsContainer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
 
         <div className='app-wrapper-content'>
            <Route path='/listWords' render={() => <ListWordsContainer/>} />
+           <Route path='/chooseLessons' render={() => <ChooseLessonsContainer/>}/>
         </div>
 
     </div>

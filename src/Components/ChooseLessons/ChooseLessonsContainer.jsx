@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
 import ChooseLessons from './ChooseLessons';
 import { connect } from 'react-redux';
-import {} from './../../redux/list-words-reducer';
+import {getListLessons} from './../../redux/list-words-reducer';
 
 
 class ChooseLessonsContainer extends Component {
+
+
+    componentDidMount()
+    {
+        this.props.getListLessons();
+    }
 
     render()
     {
@@ -17,4 +23,4 @@ const mapStateToProps = (state) => ({
     words: state.listWordsReducer.words,
 })
 
-export default connect(mapStateToProps, {})(ChooseLessonsContainer)
+export default connect( mapStateToProps, {getListLessons} )(ChooseLessonsContainer)
