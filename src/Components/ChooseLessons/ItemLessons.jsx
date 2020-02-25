@@ -1,9 +1,12 @@
 import React from 'react';
+import style from './ChooseLessons.module.css';
 
 const ItemLessons = (props) => {
     return(
-        <div>
-            {props.lesson}
+        <div className={style.lessonsItem}>
+            <span>
+                 {props.lesson}
+            </span>
         </div>
     );
 
