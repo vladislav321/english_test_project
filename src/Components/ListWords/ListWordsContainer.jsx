@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import ListWords from './ListWords';
 import { connect } from 'react-redux';
-import {getListWords} from './../../redux/list-words-reducer';
+import {getListWords, chooseTopic} from './../../redux/list-words-reducer';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 class ListWordsContainer extends Component {
 
 
     componentDidMount()
     {
-        this.props.getListWords();
+        let lessonsParam = this.props.match.params.lesson;
+        if(!lessonsParam){
+            this.props.getListWords();
+        }else{
+            this.props.chooseTopic(lessonsParam);
+        }
+       
     }
 
     render(){
@@ -23,4 +31,7 @@ const mapStateToProps = (state) => ({
     words: state.listWordsReducer.words,
 });
 
-export default connect(mapStateToProps, {getListWords}) (ListWordsContainer);
+export default compose( connect(mapStateToProps, {getListWords, chooseTopic} ),
+withRouter )(ListWordsContainer)
+
+//export default connect(mapStateToProps, {getListWords}) (ListWordsContainer);

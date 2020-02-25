@@ -13,6 +13,10 @@
     color: black;
 }
 
+.lessonsItem a {
+    text-decoration: none;
+}
+
 .lessonsItem:hover{
     background-color: orange;
     cursor: pointer;

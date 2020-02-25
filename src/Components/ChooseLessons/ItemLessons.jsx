@@ -1,17 +1,16 @@
 import React from 'react';
 import style from './ChooseLessons.module.css';
+import { NavLink } from 'react-router-dom';
 
 const ItemLessons = (props) => {
 
-    const OnChoseLesson = () => {
-
-    }
-
     return(
-        <div className={style.lessonsItem} onClick={OnChoseLesson}>
-            <span>
-                 {props.lesson}
-            </span>
+        <div className={style.lessonsItem}>
+            <NavLink to={'/listWords/' + props.lesson}>
+                <span>
+                    {props.lesson}
+                </span>
+            </NavLink>
         </div>
     );
 
