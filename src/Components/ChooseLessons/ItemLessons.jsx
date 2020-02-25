@@ -3,7 +3,7 @@ import React from 'react';
 const ItemLessons = (props) => {
     return(
         <div>
-            ItemLessons
+            {props.lesson}
         </div>
     );
 
