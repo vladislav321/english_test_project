@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import ListWords from './ListWords';
+import TranslateWords from './TranslateWords';
 import { connect } from 'react-redux';
-import {getWordFromLessonByNumber} from './../../redux/translate_words_reducer';
+import {getWordFromLessonByNumber} from '../../redux/translate_words_reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-class ListWordsContainer extends Component {
+class TranslateWordsContainer extends Component {
 
 
     componentDidMount()
@@ -22,7 +22,7 @@ class ListWordsContainer extends Component {
 
     render(){
         return(
-            <ListWords {...this.props}/>
+            <TranslateWords {...this.props}/>
         );
     }
 
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose( connect(mapStateToProps, {getWordFromLessonByNumber} ),
-withRouter )(ListWordsContainer);
+withRouter )(TranslateWordsContainer);

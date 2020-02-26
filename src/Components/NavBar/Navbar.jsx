@@ -8,7 +8,7 @@ const Navbar = () =>{
         <div className={s.item}>
           <NavLink to="/listWords" activeClassName={s.active}>
             <span>
-               list words 
+               Translate words
             </span>
           </NavLink>
         </div>

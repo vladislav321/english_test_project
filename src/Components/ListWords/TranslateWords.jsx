@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from './ListWords.module.css';
+import style from './TranslateWords.module.css';
 
 const ListWords = (props) => {
     let word = props.model.Ru;

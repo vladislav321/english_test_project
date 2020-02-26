@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import ListWordsContainer from './Components/ListWords/ListWordsContainer';
 import Navbar from './Components/NavBar/Navbar';
 import { Route } from 'react-router-dom';
 import ChooseLessonsContainer from './Components/ChooseLessons/ChooseLessonsContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
+import TranslateWordsContainer from './Components/ListWords/TranslateWordsContainer';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Navbar/>
 
         <div className='app-wrapper-content'>
-           <Route path='/listWords/:lesson?' render={() => <ListWordsContainer/>} />
+           <Route path='/listWords/:lesson?' render={() => <TranslateWordsContainer/>} />
            <Route path='/chooseLessons' render={() => <ChooseLessonsContainer/>}/>
         </div>
 
