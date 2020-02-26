@@ -1,6 +1,6 @@
 
 
-export default class BaseWordsList {
+export default class WordsList {
 
     constructor()
     {

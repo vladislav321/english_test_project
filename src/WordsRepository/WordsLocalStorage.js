@@ -1,8 +1,8 @@
-import BaseWordsList from './BaseWordsList';
+import WordsList from './WordsList';
 
 const KEY_LOCAL_STORAGE = "keyLocalStorageListWords";
 
-export default class WordsLocalStorage extends BaseWordsList {
+export default class WordsLocalStorage extends WordsList {
 
     constructor()
     {

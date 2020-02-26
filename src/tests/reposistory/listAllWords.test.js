@@ -1,143 +1,151 @@
-import {WordsRepository} from './../../WordsRepository/listAllWords';
+import WordsList from './../../WordsRepository/WordsList';
+
+beforeEach(() => {
+  // Clear all instances and calls to constructor and all methods:
+  WordsList.mockClear();
+});
 
 test('Test: "listAllWords" Set null in SetListWords', () => {
    
     //test data
 
+    let model = new WordsList();
+
+    debugger;
     // action
-    WordsRepository.setList(null);
-    let newList = WordsRepository.getList();
+    WordsList.setLists(null);
+    let newList = WordsList.getList();
 
     //expectation
     expect(newList.length).toBe(0);
 
   });
 
-  test('Test: "listAllWords" isListEmpty result true', () => {
+//   test('Test: "listAllWords" isListEmpty result true', () => {
    
-    //test data
+//     //test data
 
-    // action
-    WordsRepository.setList(null);
-    let isListEmpty = WordsRepository.isListEmpty();
+//     // action
+//     ListWords.setList(null);
+//     let isListEmpty = ListWords.isListEmpty();
 
-    //expectation
-    expect(isListEmpty).toBe(true);
+//     //expectation
+//     expect(isListEmpty).toBe(true);
 
-  });
+//   });
 
-test('Test: "listAllWords" add new list', () => {
+// test('Test: "listAllWords" add new list', () => {
    
-    //test data
-    let listWords = GetMockList();
+//     //test data
+//     let listWords = GetMockList();
 
-    // action
-    WordsRepository.setList(listWords);
-    WordsRepository.setList(listWords);
-    let newList = WordsRepository.getList();
+//     // action
+//     ListWords.setList(listWords);
+//     ListWords.setList(listWords);
+//     let newList = ListWords.getList();
 
-    //expectation
+//     //expectation
 
-    expect(newList.length).toBe(7);
+//     expect(newList.length).toBe(7);
 
-  });
+//   });
 
-  test('Test: "listAllWords" isListEmpty result false', () => {
+//   test('Test: "listAllWords" isListEmpty result false', () => {
    
-    //test data
+//     //test data
 
-    // action
-    let isListEmpty = WordsRepository.isListEmpty();
+//     // action
+//     let isListEmpty = ListWords.isListEmpty();
 
-    //expectation
-    expect(isListEmpty).toBe(false);
+//     //expectation
+//     expect(isListEmpty).toBe(false);
 
-  });
+//   });
 
-  test('Test: "listAllWords" Find by lessons', () => {
+//   test('Test: "listAllWords" Find by lessons', () => {
    
-    //test data
-    let lessons = "LESSONONE";
+//     //test data
+//     let lessons = "LESSONONE";
 
-    // action
+//     // action
    
-    let newList = WordsRepository.getListByLessons(lessons);
+//     let newList = ListWords.getListByLessons(lessons);
     
-    //expectation
+//     //expectation
 
-    expect(newList.length).toBe(3);
+//     expect(newList.length).toBe(3);
 
-  });
+//   });
 
 
-  test('Test: "listAllWords" Find by null', () => {
+//   test('Test: "listAllWords" Find by null', () => {
    
-    // test data
+//     // test data
 
-    // action
+//     // action
    
-    let newList = WordsRepository.getListByLessons(null);
-    //expectation
+//     let newList = ListWords.getListByLessons(null);
+//     //expectation
 
-    expect(newList.length).toBe(7);
+//     expect(newList.length).toBe(7);
 
-  });
+//   });
 
-  test('Test: "listAllWords" Find by unCurrect key', () => {
+//   test('Test: "listAllWords" Find by unCurrect key', () => {
    
-    // test data
-    let lessons = "qwe";
-    // action
+//     // test data
+//     let lessons = "qwe";
+//     // action
    
-    let newList = WordsRepository.getListByLessons(lessons);
-    //expectation
+//     let newList = ListWords.getListByLessons(lessons);
+//     //expectation
 
-    expect(newList.length).toBe(0);
+//     expect(newList.length).toBe(0);
 
-  });
+//   });
 
-  test('Test: "listAllWords" getModelFromLessonByWordsCount Test One', () => {
+//   test('Test: "listAllWords" getModelFromLessonByWordsCount Test One', () => {
    
-    // test data
-    let lessons = "LESSONONE";
-    let wordsCount = 2;
-    // action
+//     // test data
+//     let lessons = "LESSONONE";
+//     let wordsCount = 2;
+//     // action
    
-    let newList = WordsRepository.getModelFromLessonByWordsCount(lessons,wordsCount);
-    //expectation
-    expect(newList.en).toBe('relux');
+//     let newList = ListWords.getModelFromLessonByWordsCount(lessons,wordsCount);
+//     //expectation
+//     expect(newList.en).toBe('relux');
 
-  });
+//   });
 
-  test('Test: "listAllWords" getModelFromLessonByWordsCount OutOfRange', () => {
+//   test('Test: "listAllWords" getModelFromLessonByWordsCount OutOfRange', () => {
    
-    // test data
-    let lessons = "LESSONONE";
-    let wordsCount = 3;
-    // action
+//     // test data
+//     let lessons = "LESSONONE";
+//     let wordsCount = 3;
+//     // action
    
-    let newList = WordsRepository.getModelFromLessonByWordsCount(lessons,wordsCount);
-    //expectation
-    expect(newList).toBe(null);
+//     let newList = ListWords.getModelFromLessonByWordsCount(lessons,wordsCount);
+//     //expectation
+//     expect(newList).toBe(null);
 
-  });
+//   });
 
-  test('Test: "listAllWords" GetListLessons', () => {
+//   test('Test: "listAllWords" GetListLessons', () => {
    
-    // test data
-    let lessonOne = "LESSONONE";
-    let lessonTwo = "LESSONTWO";
-    let lessonFree = "LESSONTHREE";
-    // action
+//     // test data
+//     let lessonOne = "LESSONONE";
+//     let lessonTwo = "LESSONTWO";
+//     let lessonFree = "LESSONTHREE";
+//     // action
    
-    let newList = WordsRepository.getListLessons();
-    //expectation
-    expect(newList.length).toBe(3);
-    expect(newList[0].Lessons).toBe(lessonOne);
-    expect(newList[1].Lessons).toBe(lessonTwo);
-    expect(newList[2].Lessons).toBe(lessonFree);
+//     let newList = ListWords.getListLessons();
+//     //expectation
+//     expect(newList.length).toBe(3);
+//     expect(newList[0].Lessons).toBe(lessonOne);
+//     expect(newList[1].Lessons).toBe(lessonTwo);
+//     expect(newList[2].Lessons).toBe(lessonFree);
 
-  });
+//   });
 
 
   const GetMockList = () => {
