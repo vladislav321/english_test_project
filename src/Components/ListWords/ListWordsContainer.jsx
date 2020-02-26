@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ListWords from './ListWords';
 import { connect } from 'react-redux';
-import {getListWords, chooseTopic} from './../../redux/list-words-reducer';
+import {getWordFromLessonByNumber} from './../../redux/translate_words_reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
@@ -12,9 +12,9 @@ class ListWordsContainer extends Component {
     {
         let lessonsParam = this.props.match.params.lesson;
         if(!lessonsParam){
-            this.props.getListWords();
+            this.props.getWordFromLessonByNumber("LESSONONE", 0);
         }else{
-            this.props.chooseTopic(lessonsParam);
+            this.props.getWordFromLessonByNumber(lessonsParam, 0);
         }
        
     }
@@ -28,10 +28,8 @@ class ListWordsContainer extends Component {
 } 
 
 const mapStateToProps = (state) => ({
-    words: state.listWordsReducer.words,
+    model: state.translateWordsReducer.model,
 });
 
-export default compose( connect(mapStateToProps, {getListWords, chooseTopic} ),
-withRouter )(ListWordsContainer)
-
-//export default connect(mapStateToProps, {getListWords}) (ListWordsContainer);
+export default compose( connect(mapStateToProps, {getWordFromLessonByNumber} ),
+withRouter )(ListWordsContainer);

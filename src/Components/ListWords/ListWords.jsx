@@ -2,7 +2,7 @@ import React from 'react';
 import style from './ListWords.module.css';
 
 const ListWords = (props) => {
-  
+  debugger;
     return(
         <div className={style.wordsContainer} >
             <div> WordsRu </div>

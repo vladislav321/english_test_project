@@ -46,11 +46,17 @@ export default class WordsList {
 
     //Public Method
 
-    getModelByWordsCount( lessons, wordsCount ){
-        if(!lessons || !wordsCount) return null;
+    getModelByWordsCount( lessons, wordsCount = 0 ){
+        if(!lessons) {
+            return null;
+        } 
     
         let list = this.getListByLesson(lessons);
-        return (list.length - 1) < wordsCount ? null : list[wordsCount]
+        let model = (list.length - 1) < wordsCount ? null : list[wordsCount];
+
+
+
+        return model;
     }
 
     getListByLesson(lessons){ return this.listWords.filter(l => l.Lessons === lessons); }

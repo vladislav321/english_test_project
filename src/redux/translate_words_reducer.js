@@ -12,11 +12,17 @@ const TranslateWordsReducer = (state = Init, action) => {
     switch(action.type)
     {
         case GET_WORD_BY_NUMBER:
-            return {...state, model: WordsRepositorySingelton.getInstance().getModelFromLessonByWordsCount( action.lesson, action.number)};
+            return {...state, model: GetModel(action.lesson, action.number) };
 
         default :
-            return {...state, model: WordsRepositorySingelton.getInstance().getModelFromLessonByWordsCount( "LESSONONE" , 0)}    
+            return {...state, model: GetModel( "LESSONONE" , 0) }    
     }
+}
+
+export const GetModel = (lessons, number) => {
+    let model = WordsRepositorySingelton.getInstance().getModelFromLessonByWordsCount( lessons, number);
+
+    return model;
 }
 
 export const getWordFromLessonByNumber = (lesson, number) => ({type: GET_WORD_BY_NUMBER, lesson, number})
