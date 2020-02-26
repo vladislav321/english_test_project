@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './ListWords.module.css';
 
 const ListWords = (props) => {
@@ -6,6 +6,14 @@ const ListWords = (props) => {
 
     let [editMode, setEditMode] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
+    let [resultCheck, setResultCheck] = useState(true);
+
+
+    useEffect( () => {
+        setEditMode(false);
+        setTextTranslate("");
+        setResultCheck(true);
+    }, [props.model] );
 
     const onEditMode = () => {
         let mode = editMode = !editMode;
@@ -14,6 +22,15 @@ const ListWords = (props) => {
 
     const onTextChange = (e) => {
         setTextTranslate(e.currentTarget.value);
+    }
+
+    const onCheckResult = () => {
+        if(textTranslate === props.model.En)
+        {
+            props.getWordFromLessonByNumber(props.model.Lessons, props.model.WordsCount + 1);
+        }else{
+            setResultCheck(false);
+        }
     }
     
     return(
@@ -31,8 +48,9 @@ const ListWords = (props) => {
                 onChange={ onTextChange }
                 placeholder="Enter translate"
                 value={ textTranslate }></input>
-            <div className={style.btnParent}>
-               <button>Sent at check</button>   
+
+            <div className={resultCheck ? style.btnParent : style.btnParentError}>
+               <button onClick={onCheckResult}>Sent at check</button>   
             </div>
          
         </div>
