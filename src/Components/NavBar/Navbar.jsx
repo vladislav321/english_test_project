@@ -6,10 +6,18 @@ const Navbar = () =>{
     return(
         <nav className={s.nav}>
         <div className={s.item}>
-          <NavLink to="/listWords" activeClassName={s.active}> list words </NavLink>
+          <NavLink to="/listWords" activeClassName={s.active}>
+            <span>
+               list words 
+            </span>
+          </NavLink>
         </div>
         <div className={s.item}>
-          <NavLink to="/chooseLessons" activeClassName={s.active}> choose lessons </NavLink>
+          <NavLink to="/chooseLessons" activeClassName={s.active}>
+            <span>
+               choose lessons 
+            </span>
+          </NavLink>
         </div>
     </nav>
     );

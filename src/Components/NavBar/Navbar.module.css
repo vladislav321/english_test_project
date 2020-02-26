@@ -1,28 +1,26 @@
 .nav {
     grid-area: n;
-    background-color: red;
+    background-color: #f1f1f1;
     padding: 20px;
+  }
+
+  .nav span {
+    font-size: 16px;
   }
   
   .item a {
-    color: white;
+    display: block;
+    color: #000;
+    padding: 8px 16px;
     text-decoration: none;
   }
   
   .item a.active {
-    color: gold;
-  }
-  
-  .itemFriends {
-    margin-top: 30px;
-  }
-  
-  .itemFriends a {
+    background-color: #555;
     color: white;
-    text-decoration: none;
-    font-size: 30px;
   }
-  
-  .itemFriends a.active {
-    color: gold;
+
+  .item a:hover {
+    background-color: #555;
   }
+ 
