@@ -5,12 +5,6 @@ import {getListLessons} from './../../redux/lessons_reducer';
 
 class ChooseLessonsContainer extends Component {
 
-
-    componentDidMount()
-    {
-        this.props.getListLessons();
-    }
-
     render()
     {
         return <ChooseLessons {...this.props}/>
