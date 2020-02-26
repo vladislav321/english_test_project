@@ -33,6 +33,8 @@ export default class WordsRepositorySingelton {
 
     getListLessons() { return this.wordsListLocalApi.getListLessons(); }
 
+    ClearRepo() { this.wordsListLocalApi.ClearRepo(); }
+
     //Public Method
   
 }

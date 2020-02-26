@@ -1,10 +1,9 @@
 import { UserAPI } from "../api/api";
 import WordsRepositorySingelton from './../WordsRepository/WordsRepositorySingelton';
 
-const CHOOSE_TOPIC = "CHOOSE_TOPIC";
 const SET_LIST_WORDS = "SET_LIST_WORDS";
 const GET_LIST_WORDS = "GET_LIST_WORDS";
-const GET_LIST_LESSONS = "GET_LIST_LESSONS";
+const CLEAR_LIST_REPO = "CLEAR_LIST_REPO";
 
 let initState = {
     words: [],
@@ -19,13 +18,11 @@ const ListWordsReducer = (state = initState, action) => {
             return {...state, words: action.list};
 
         case GET_LIST_WORDS:
-            return {...state, words: WordsRepositorySingelton.getInstance().getList()}
-        
-        case CHOOSE_TOPIC:
-            return {...state, words: WordsRepositorySingelton.getInstance().getListByLessons(action.lessons)}
+            return {...state, words: WordsRepositorySingelton.getInstance().getList() };
 
-        case GET_LIST_LESSONS:
-            return {...state, words: WordsRepositorySingelton.getInstance().getListLessons()}
+        case CLEAR_LIST_REPO:
+            WordsRepositorySingelton.getInstance().ClearRepo();    
+            return state;
         
         default: return state;
     }
@@ -34,8 +31,8 @@ const ListWordsReducer = (state = initState, action) => {
 
 export const setList = (list) => ({type: SET_LIST_WORDS, list});
 export const getList = () => ({type: GET_LIST_WORDS});
-export const chooseTopic = (lessons) => ({type: CHOOSE_TOPIC, lessons});
-export const getListLessons = () => ({type: GET_LIST_LESSONS});
+export const clearRepo = () => ({type: CLEAR_LIST_REPO});
+
 
 export const getListWords = () => (dispatch) => {
 

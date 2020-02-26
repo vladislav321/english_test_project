@@ -24,4 +24,10 @@ export default class WordsLocalStorage extends WordsList {
        }
     }
 
+    ClearRepo()
+    {
+        super.ClearRepo();
+        localStorage.removeItem(KEY_LOCAL_STORAGE);
+    }
+
 } 

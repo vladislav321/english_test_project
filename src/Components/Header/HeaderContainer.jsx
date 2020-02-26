@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './HeaderFunc/Header';
 import { connect } from 'react-redux';
-import {getListWords} from './../../redux/list-words-reducer';
+import {getListWords, clearRepo} from './../../redux/list-words-reducer';
 
 class HeaderContainer extends React.Component {
 
@@ -20,5 +20,5 @@ const mapStateToProps = (state) => ({
     listWordsReducer: state.listWordsReducer.words,
 })
 
-export default connect( mapStateToProps, {getListWords})(HeaderContainer);
+export default connect( mapStateToProps, {getListWords, clearRepo})(HeaderContainer);
 

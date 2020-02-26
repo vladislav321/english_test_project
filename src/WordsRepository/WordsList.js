@@ -61,6 +61,10 @@ export default class WordsList {
 
     getListByLesson(lessons){ return this.listWords.filter(l => l.Lessons === lessons); }
 
+    ClearRepo() {
+        this.listWords = [];
+    }
+
 
 
 }
