@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import ListWordsContainer from './Components/ListWords/ListWordsContainer';
-import Header from './Components/Header/Header';
+import Header from './Components/Header/HeaderFunc/Header';
 import Navbar from './Components/NavBar/Navbar';
 import { Route } from 'react-router-dom';
 import ChooseLessonsContainer from './Components/ChooseLessons/ChooseLessonsContainer';

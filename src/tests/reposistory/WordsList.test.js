@@ -1,4 +1,4 @@
-import WordsList from './../../WordsRepository/WordsList';
+import WordsList from '../../WordsRepository/WordsList';
 
 test('Test: "listAllWords" Set null in WordsList', () => {
    
