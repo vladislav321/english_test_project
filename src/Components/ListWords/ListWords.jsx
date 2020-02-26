@@ -5,10 +5,15 @@ const ListWords = (props) => {
     let word = props.model.Ru;
 
     let [editMode, setEditMode] = useState(false);
+    let [textTranslate, setTextTranslate] = useState("");
 
     const onEditMode = () => {
         let mode = editMode = !editMode;
         setEditMode(mode);
+    }
+
+    const onTextChange = (e) => {
+        setTextTranslate(e.currentTarget.value);
     }
     
     return(
@@ -20,9 +25,16 @@ const ListWords = (props) => {
                 {!editMode ? "Показать перевод" : props.model.En}
             </div>
 
+
             <input 
                 type="text"
-                placeholder="Enter translate"></input>
+                onChange={ onTextChange }
+                placeholder="Enter translate"
+                value={ textTranslate }></input>
+            <div className={style.btnParent}>
+               <button>Sent at check</button>   
+            </div>
+         
         </div>
     );
 }
