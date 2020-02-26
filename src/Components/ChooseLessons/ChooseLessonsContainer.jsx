@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import ChooseLessons from './ChooseLessons';
 import { connect } from 'react-redux';
-import {getListLessons} from './../../redux/list-words-reducer';
-
+import {getListLessons} from './../../redux/lessons_reducer';
 
 class ChooseLessonsContainer extends Component {
 
@@ -20,7 +19,7 @@ class ChooseLessonsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    words: state.listWordsReducer.words,
+    sortListLessons: state.lessonsReducer.sortListLessons,
 })
 
 export default connect( mapStateToProps, {getListLessons} )(ChooseLessonsContainer)
