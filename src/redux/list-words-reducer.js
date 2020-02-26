@@ -1,5 +1,5 @@
 import { UserAPI } from "../api/api";
-import WordsRepositorySingelton from './../WordsRepository/listAllWords';
+import WordsRepositorySingelton from './../WordsRepository/WordsRepositorySingelton';
 
 const CHOOSE_TOPIC = "CHOOSE_TOPIC";
 const SET_LIST_WORDS = "SET_LIST_WORDS";

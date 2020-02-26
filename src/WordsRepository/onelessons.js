@@ -1,4 +1,0 @@
-
-const oneLessons = () => {
-    return null;
-}

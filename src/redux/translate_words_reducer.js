@@ -1,4 +1,4 @@
-import WordsRepositorySingelton from './../WordsRepository/listAllWords';
+import WordsRepositorySingelton from '../WordsRepository/WordsRepositorySingelton';
 
 const GET_WORD_BY_NUMBER = "GET_WORD_BY_NUMBER";
 
