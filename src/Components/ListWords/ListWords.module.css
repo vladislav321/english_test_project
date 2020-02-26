@@ -1,9 +1,22 @@
 
-.wordsContainer {
+.wordText {
+    display: flex;
+    font-size: 30px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
 
+.wordTranslate {
+    display: flex;
+    font-size: 30px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .wordsContainer input {
+    margin-top: 50px;
     width: 140px;
     box-sizing: border-box;
     border: 2px solid #ccc;

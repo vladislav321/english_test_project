@@ -17,6 +17,7 @@ class ListWordsContainer extends Component {
             this.props.getWordFromLessonByNumber(lessonsParam, 0);
         }
        
+        
     }
 
     render(){
