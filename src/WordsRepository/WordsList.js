@@ -87,7 +87,10 @@ export default class WordsList {
         } 
     
         let list = this.getListByLesson(lessons);
-        let model = (list.length - 1) < wordsCount ? null : list[wordsCount];
+        
+        let modelNull = {Id: "1", Lessons: lessons, En: "---", Ru: "---", WordsCount: wordsCount};
+
+        let model = (list.length - 1) < wordsCount ? modelNull : list[wordsCount];
 
 
 
