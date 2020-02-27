@@ -39,6 +39,16 @@ const ListWords = (props) => {
             setResultCheck(false);
         }
     }
+
+    const onNextLesson = () => {
+        if(!props.model) return;
+        props.getNextLesson(lesson);
+    }
+
+    const onPreviusLesson = () => {
+        if(!props.model) return;
+        props.getPreviusLesson(lesson);
+    }
     
     return(
         <div className={style.wordsContainer} >
@@ -50,8 +60,8 @@ const ListWords = (props) => {
             </div>
 
             <div className={style.containerLessons}>
-                <button >Previus lesson</button>
-                <button >Next lesson</button>
+                <button onClick={onPreviusLesson}>Previus lesson</button>
+                <button onClick={onNextLesson}>Next lesson</button>
             </div>
 
             <div className={style.wordText}> 

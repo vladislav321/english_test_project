@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TranslateWords from './TranslateWords';
 import { connect } from 'react-redux';
-import {getWordFromLessonByNumber} from '../../redux/translate_words_reducer';
+import {getWordFromLessonByNumber , getNextLesson, getPreviusLesson} from '../../redux/translate_words_reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
@@ -32,5 +32,6 @@ const mapStateToProps = (state) => ({
     model: state.translateWordsReducer.model,
 });
 
-export default compose( connect(mapStateToProps, {getWordFromLessonByNumber} ),
+export default compose( connect(mapStateToProps, 
+    {getWordFromLessonByNumber, getNextLesson, getPreviusLesson} ),
 withRouter )(TranslateWordsContainer);
