@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import style from './TranslateWords.module.css';
 
 const ListWords = (props) => {
-
+ 
     let lesson = !props.model ? "---" : props.model.Lessons;
     let wordsCount = !props.model ? 0 : props.model.WordsCount;
     let word = !props.model ? "---" : props.model.Ru;
-
+    let wordTranslate = !props.model ? "---" : props.model.En;
+   
+  
     let [editMode, setEditMode] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
     let [resultCheck, setResultCheck] = useState(true);
@@ -30,7 +32,17 @@ const ListWords = (props) => {
     const onCheckResult = () => {
         if(!props.model) return;
         
-        if(textTranslate === props.model.En)
+        if(wordTranslate.includes(' '))
+        {
+            wordTranslate = wordTranslate.replace(/\s/g, '');
+        }
+    
+        if(word.includes(' '))
+        {
+            word = word.replace(/\s/g, '');
+        }
+
+        if(textTranslate === wordTranslate)
         {
             props.getWordFromLessonByNumber(lesson, wordsCount + 1);
         }else{
@@ -44,7 +56,7 @@ const ListWords = (props) => {
                  {word} 
             </div>
             <div className={style.wordTranslate} onDoubleClick={onEditMode}>
-                {!editMode ? "Показать перевод" : props.model.En}
+                {!editMode ? "Показать перевод" : wordTranslate}
             </div>
 
 
