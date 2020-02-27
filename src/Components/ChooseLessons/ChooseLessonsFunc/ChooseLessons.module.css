@@ -8,14 +8,22 @@
     border-radius: 5px;
 }
 
-.lessonsItem span {
+.textBlock span {
     font-size: 20px;
     color: black;
 }
 
+.textBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .lessonsItem a {
     text-decoration: none;
+    width: 50%;
 }
+
 
 .lessonsItem:hover{
     background-color: orange;

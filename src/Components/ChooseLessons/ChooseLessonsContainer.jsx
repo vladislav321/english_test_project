@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ChooseLessons from './ChooseLessons';
+import ChooseLessons from './ChooseLessonsFunc/ChooseLessons';
 import { connect } from 'react-redux';
 import {getListLessons} from './../../redux/lessons_reducer';
 

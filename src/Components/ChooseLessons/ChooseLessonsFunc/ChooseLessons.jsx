@@ -8,7 +8,7 @@ const ChooseLessons = (props) => {
 
         return(
             <div>
-               { listLessons}
+               { listLessons }
             </div>
         );
 

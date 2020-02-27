@@ -7,9 +7,11 @@ const ItemLessons = (props) => {
     return(
         <div className={style.lessonsItem}>
             <NavLink to={'/listWords/' + props.lesson}>
-                <span>
-                    {props.lesson}
-                </span>
+                <div className={style.textBlock}>
+                    <span>
+                        {props.lesson}
+                    </span>
+                </div>
             </NavLink>
         </div>
     );
