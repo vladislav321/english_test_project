@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemLessons from './ItemLessons';
+import style from './ChooseLessons.module.css';
 
 const ChooseLessons = (props) => {
      
@@ -7,7 +8,7 @@ const ChooseLessons = (props) => {
             <ItemLessons lesson={p.Lessons}  key={p.Id}/>);
 
         return(
-            <div>
+            <div className={style.scroolBlock}>
                { listLessons }
             </div>
         );
