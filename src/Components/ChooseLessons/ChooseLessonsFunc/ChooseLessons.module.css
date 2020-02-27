@@ -33,7 +33,7 @@
 
 .scroolBlock {
     overflow: scroll;
-    height: 500px;
+    height: 40vh;
     border: solid 1px black;
 }
 

@@ -31,17 +31,7 @@ const ListWords = (props) => {
 
     const onCheckResult = () => {
         if(!props.model) return;
-        
-        if(wordTranslate.includes(' '))
-        {
-            wordTranslate = wordTranslate.replace(/\s/g, '');
-        }
-    
-        if(word.includes(' '))
-        {
-            word = word.replace(/\s/g, '');
-        }
-
+     
         if(textTranslate === wordTranslate)
         {
             props.getWordFromLessonByNumber(lesson, wordsCount + 1);
@@ -66,8 +56,8 @@ const ListWords = (props) => {
                 placeholder="Enter translate"
                 value={ textTranslate }></input>
 
-            <div className={resultCheck ? style.btnParent : style.btnParentError}>
-               <button onClick={onCheckResult}>Sent at check</button>   
+            <div className={style.btnParent}>
+               <button className={resultCheck ?style.btnParrentSuccses : style.btnParentError} onClick={onCheckResult}>Sent at check</button>   
             </div>
          
         </div>
