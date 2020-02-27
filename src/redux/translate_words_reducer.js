@@ -20,7 +20,7 @@ const TranslateWordsReducer = (state = Init, action) => {
             return {...state, model: GetNextLesson(action.currentLesson)};
         
         case PREVIUS_LESSON:
-            return {...state, model: GetPreviusLesson(action.previusLesson)};
+            return {...state, model: GetPreviusLesson(action.currentLesson)};
 
         default :
             return {...state, model: GetModel( "LESSONONE" , 0) }    
@@ -32,7 +32,6 @@ export const GetModel = (lessons, number) => {
 }
 
 const GetNextLesson = (currentLesson) => {
-    debugger;
     return WordsRepositorySingelton.getInstance().getModelNextLessons(currentLesson);
 }
 
