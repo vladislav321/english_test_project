@@ -6,7 +6,7 @@ const PREVIUS_LESSON = "PREVIUS_LESSON";
 
 
 let Init = {
-    model: {}
+    model: {Id: "1", Lessons: "1", En: "---", Ru: "---", WordsCount: 0}
 }
 
 const TranslateWordsReducer = (state = Init, action) => {
@@ -23,7 +23,7 @@ const TranslateWordsReducer = (state = Init, action) => {
             return {...state, model: GetPreviusLesson(action.currentLesson)};
 
         default :
-            return {...state, model: GetModel( "LESSONONE" , 0) }    
+            return {...state, model: GetModel( "1" , 0) }    
     }
 }
 

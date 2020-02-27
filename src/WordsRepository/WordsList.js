@@ -71,7 +71,6 @@ export default class WordsList {
             {
                 if(i > 0) 
                 {
-                    debugger;
                     return listLesson[i - 1];
                 }
             }
