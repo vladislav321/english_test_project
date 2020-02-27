@@ -44,6 +44,24 @@ export default class WordsList {
         return listLessons;
     }
 
+
+    getModelNextLessons(currentLesson)
+    {
+        let listLesson = this.getListLessons();
+        for(let i = 0; i < listLesson.length; i++)
+        {
+            if(listLesson[i].Lessons === currentLesson)
+            {
+                if(i < (listLesson.length - 1)) 
+                {
+                    return listLesson[i + 1];
+                }
+            }
+        }
+
+        return listLesson[0];
+    }
+
     //Public Method
 
     getModelByWordsCount( lessons, wordsCount = 0 ){
