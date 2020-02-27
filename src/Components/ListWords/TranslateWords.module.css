@@ -65,4 +65,41 @@
     color: white;
 }
 
+.containerLessons{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.containerLessons button {
+    border: none;
+    padding: 8px 32px;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid rgb(76, 82, 76);
+}
+
+.containerLessons button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.lessonTitle {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.lessonTitle span {
+    font-size: 30px;
+    color: black;
+}
+
+
 

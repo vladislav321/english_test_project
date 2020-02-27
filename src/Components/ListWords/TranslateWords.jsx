@@ -42,6 +42,18 @@ const ListWords = (props) => {
     
     return(
         <div className={style.wordsContainer} >
+
+            <div className={style.lessonTitle}>
+                <span>
+                    Lesson: {lesson}
+                </span>
+            </div>
+
+            <div className={style.containerLessons}>
+                <button >Previus lesson</button>
+                <button >Next lesson</button>
+            </div>
+
             <div className={style.wordText}> 
                  {word} 
             </div>
