@@ -162,17 +162,49 @@ test('Test: "listAllWords" add new list', () => {
 
   });
 
-  test('Test: "listAllWords" Next Lessons', () => {
+  test('Test: "listAllWords" Next Lessons OutOfRange', () => {
+   
+    // test data
+    let model = GetInstanceWordsList();
+    SetListWords(model);
+    let lessonOne = "3";
+    let lessonTwo = "1"
+  
+    // action
+   
+    let listNextLesson = model.getModelNextLessons(lessonOne);
+    //expectation
+    expect(listNextLesson.Lessons).toBe(lessonTwo);
+
+  });
+
+  test('Test: "listAllWords" Previus Lessons OutOfRange', () => {
+   
+    // test data
+    let model = GetInstanceWordsList();
+    SetListWords(model);
+    let lessonOne = "3";
+    let lessonTwo = "2"
+  
+    // action
+   
+    let listNextLesson = model.getModelPreviusLessons(lessonOne);
+    //expectation
+    expect(listNextLesson.Lessons).toBe(lessonTwo);
+
+  });
+
+  test('Test: "listAllWords" Previus Lessons return one Lesson', () => {
    
     // test data
     let model = GetInstanceWordsList();
     SetListWords(model);
     let lessonOne = "1";
-    let lessonTwo = "2"
+    let lessonTwo = "1"
   
     // action
    
-    let listNextLesson = model.getModelNextLessons(lessonOne);
+    let listNextLesson = model.getModelPreviusLessons(lessonOne);
     //expectation
     expect(listNextLesson.Lessons).toBe(lessonTwo);
 
