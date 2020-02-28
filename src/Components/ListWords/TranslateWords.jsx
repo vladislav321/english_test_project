@@ -49,6 +49,17 @@ const ListWords = (props) => {
         if(!props.model) return;
         props.getPreviusLesson(lesson);
     }
+
+    const onRepeatLesson = () => {
+        if(!props.model) return;
+        props.getWordFromLessonByNumber(lesson, 0);
+    }
+
+    const hendleKeyDoew = (e) => {
+        if(e.key === 'Enter') {
+            onCheckResult();
+        }
+    }
     
     return(
         <div className={style.wordsContainer} >
@@ -61,6 +72,7 @@ const ListWords = (props) => {
 
             <div className={style.containerLessons}>
                 <button onClick={onPreviusLesson}>Previus lesson</button>
+                <button onClick={onPreviusLesson}>Repeat lesson</button>
                 <button onClick={onNextLesson}>Next lesson</button>
             </div>
 
@@ -76,6 +88,7 @@ const ListWords = (props) => {
                 type="text"
                 onChange={ onTextChange }
                 placeholder="Enter translate"
+                onKeyDown={ hendleKeyDoew }
                 value={ textTranslate }></input>
 
             <div className={style.btnParent}>
