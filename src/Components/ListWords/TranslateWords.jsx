@@ -7,12 +7,10 @@ const ListWords = (props) => {
     let wordsCount = !props.model ? 0 : props.model.WordsCount;
     let word = !props.model ? "---" : props.model.Ru;
     let wordTranslate = !props.model ? "---" : props.model.En;
-   
   
     let [editMode, setEditMode] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
     let [resultCheck, setResultCheck] = useState(true);
-
 
     useEffect( () => {
         setEditMode(false);
@@ -20,45 +18,21 @@ const ListWords = (props) => {
         setResultCheck(true);
     }, [props.model] );
 
-    const onEditMode = () => {
-        let mode = editMode = !editMode;
-        setEditMode(mode);
-    }
-
-    const onTextChange = (e) => {
-        setTextTranslate(e.currentTarget.value);
-    }
+    const onEditMode = () => setEditMode(editMode = !editMode);
+    const onTextChange = (e) => setTextTranslate(e.currentTarget.value);
+    const onNextLesson = () => props.getNextLesson(lesson);
+    const onPreviusLesson = () =>  props.getPreviusLesson(lesson);
+    const onRepeatLesson = () => props.getWordFromLessonByNumber(lesson, 0);
 
     const onCheckResult = () => {
-        if(!props.model) return;
-     
         if(textTranslate === wordTranslate)
-        {
             props.getWordFromLessonByNumber(lesson, wordsCount + 1);
-        }else{
+        else
             setResultCheck(false);
         }
-    }
-
-    const onNextLesson = () => {
-        if(!props.model) return;
-        props.getNextLesson(lesson);
-    }
-
-    const onPreviusLesson = () => {
-        if(!props.model) return;
-        props.getPreviusLesson(lesson);
-    }
-
-    const onRepeatLesson = () => {
-        if(!props.model) return;
-        props.getWordFromLessonByNumber(lesson, 0);
-    }
 
     const hendleKeyDoew = (e) => {
-        if(e.key === 'Enter') {
-            onCheckResult();
-        }
+        if(e.key === 'Enter') onCheckResult();
     }
     
     return(
@@ -72,7 +46,7 @@ const ListWords = (props) => {
 
             <div className={style.containerLessons}>
                 <button onClick={onPreviusLesson}>Previus lesson</button>
-                <button onClick={onPreviusLesson}>Repeat lesson</button>
+                <button onClick={onRepeatLesson}>Repeat lesson</button>
                 <button onClick={onNextLesson}>Next lesson</button>
             </div>
 
