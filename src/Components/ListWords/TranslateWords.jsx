@@ -8,17 +8,17 @@ const ListWords = (props) => {
     let word = !props.model ? "---" : props.model.Ru;
     let wordTranslate = !props.model ? "---" : props.model.En;
   
-    let [editMode, setEditMode] = useState(false);
+    let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
     let [resultCheck, setResultCheck] = useState(true);
 
     useEffect( () => {
-        setEditMode(false);
+        setShowTranslate(false);
         setTextTranslate("");
         setResultCheck(true);
     }, [props.model] );
 
-    const onEditMode = () => setEditMode(editMode = !editMode);
+    const onShowTranslate = () => setShowTranslate(isShowTranslate = !isShowTranslate);
     const onTextChange = (e) => setTextTranslate(e.currentTarget.value);
     const onNextLesson = () => props.getNextLesson(lesson);
     const onPreviusLesson = () =>  props.getPreviusLesson(lesson);
@@ -53,8 +53,8 @@ const ListWords = (props) => {
             <div className={style.wordText}> 
                  {word} 
             </div>
-            <div className={style.wordTranslate} onDoubleClick={onEditMode}>
-                {!editMode ? "Показать перевод" : wordTranslate}
+            <div className={style.wordTranslate} onDoubleClick={onShowTranslate}>
+                {!isShowTranslate ? "Показать перевод" : wordTranslate}
             </div>
 
 
