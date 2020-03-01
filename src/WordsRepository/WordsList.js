@@ -92,8 +92,6 @@ export default class WordsList {
 
         let model = (list.length - 1) < wordsCount ? modelNull : list[wordsCount];
 
-
-
         return model;
     }
 

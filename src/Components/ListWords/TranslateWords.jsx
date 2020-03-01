@@ -26,7 +26,9 @@ const ListWords = (props) => {
 
     const onCheckResult = () => {
         if(textTranslate === wordTranslate)
-            props.getWordFromLessonByNumber(lesson, wordsCount + 1);
+        {
+            props.getWordFromLessonByNumber(lesson, wordsCount);
+        }
         else
             setResultCheck(false);
         }
