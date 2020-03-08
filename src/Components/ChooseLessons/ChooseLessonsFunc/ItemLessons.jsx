@@ -1,18 +1,23 @@
 import React from 'react';
 import style from './ChooseLessons.module.css';
 import { NavLink } from 'react-router-dom';
+import ProgressIndicators from '../../common/ProgressIdicators/ProgressIndicators';
 
-const ItemLessons = (props) => {
+const ItemLessons = ({lesson}) => {
 
     return(
         <div className={style.lessonsItem}>
-            <NavLink to={'/listWords/' + props.lesson}>
+            <NavLink to={'/listWords/' + lesson}>
                 <div className={style.textBlock}>
                     <span>
-                        {props.lesson}
+                        {lesson}
                     </span>
                 </div>
             </NavLink>
+            <div  className={style.progressIndecator} >
+                <ProgressIndicators  />
+            </div>
+           
         </div>
     );
 

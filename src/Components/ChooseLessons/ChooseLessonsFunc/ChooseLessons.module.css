@@ -1,16 +1,20 @@
 .lessonsItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+        ". numberLesson progress";
+
+
     background-color: lightgray;
     margin: 10px;
     height: 30px;
     border-radius: 5px;
 }
 
-.textBlock span {
-    font-size: 20px;
-    color: black;
+.lessonsItem a {
+    grid-area: numberLesson;
+    text-decoration: none;
+    width: 100%;
 }
 
 .textBlock {
@@ -19,9 +23,15 @@
     align-items: center;
 }
 
-.lessonsItem a {
-    text-decoration: none;
-    width: 50%;
+.textBlock span {
+    font-size: 20px;
+    color: black;
+}
+
+.progressIndecator {
+    grid-area: progress;
+    width: 100%;
+    height: 100%;
 }
 
 

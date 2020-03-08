@@ -1,0 +1,23 @@
+
+.blockProggres{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.parrentProgressIndicator{
+    height: 40%;
+    width: 90%;
+    background-color:rgb(34, 34, 34);
+    border-radius: 7px;
+    padding: 0px;
+}
+
+.progressIndicatorStyle{
+    height: 100%;
+    width: 90%;
+    background-color: lawngreen;
+    border-radius: 7px;
+    transition: width 1s ease-in-out;
+    box-shadow: inset 0 0 6px #000;
+}
