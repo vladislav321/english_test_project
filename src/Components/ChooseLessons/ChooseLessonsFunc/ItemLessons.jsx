@@ -9,7 +9,7 @@ const ItemLessons = ({lessonId, lesson}) => {
 
     return(
         <div className={style.lessonsItem}>
-            <NavLink to={'/listWords/' + lessonId}>
+            <NavLink to={'/translateWords/' + lessonId}>
                 <div className={style.textBlock}>
                     <span>
                         {lesson}

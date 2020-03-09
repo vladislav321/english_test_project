@@ -6,7 +6,7 @@ const Navbar = () =>{
     return(
         <nav className={s.nav}>
         <div className={s.item}>
-          <NavLink to="/listWords" activeClassName={s.active}>
+          <NavLink to="/translateWords" activeClassName={s.active}>
             <span>
                Translate words
             </span>

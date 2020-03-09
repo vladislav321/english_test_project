@@ -13,7 +13,7 @@ function App() {
         <Navbar/>
 
         <div className='app-wrapper-content'>
-           <Route path='/listWords/:lesson?' render={() => <TranslateWordsContainer/>} />
+           <Route path='/translateWords/:lesson?' render={() => <TranslateWordsContainer/>} />
            <Route path='/chooseLessons' render={() => <ChooseLessonsContainer/>}/>
         </div>
 
