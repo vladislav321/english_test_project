@@ -5,8 +5,6 @@ import ProgressIndicators from '../../common/ProgressIdicators/ProgressIndicator
 
 const ItemLessons = ({lessonId, lesson}) => {
 
-    console.log(lessonId + " , " + lesson);
-
     return(
         <div className={style.lessonsItem}>
             <NavLink to={'/translateWords/' + lessonId}>

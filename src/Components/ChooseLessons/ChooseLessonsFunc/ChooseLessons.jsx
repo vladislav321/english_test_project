@@ -3,7 +3,6 @@ import ItemLessons from './ItemLessons';
 import style from './ChooseLessons.module.css';
 
 const ChooseLessons = (props) => {
-   console.log(props.sortListLessons);
         let listLessons = props.sortListLessons.map( p => 
             <ItemLessons 
                 lesson={p.Lessons} 

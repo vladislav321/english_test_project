@@ -1,14 +1,15 @@
 .lessonsItem {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 2fr 2fr;
     grid-template-areas: 
-        ". numberLesson progress";
+        "numberLesson progress";
 
 
     background-color: lightgray;
     margin: 10px;
-    height: 30px;
+    height: 60px;
     border-radius: 5px;
+    padding: 7px;
 }
 
 .lessonsItem a {
