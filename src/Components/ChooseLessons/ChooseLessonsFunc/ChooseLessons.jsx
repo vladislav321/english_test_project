@@ -3,9 +3,12 @@ import ItemLessons from './ItemLessons';
 import style from './ChooseLessons.module.css';
 
 const ChooseLessons = (props) => {
-     
+   console.log(props.sortListLessons);
         let listLessons = props.sortListLessons.map( p => 
-            <ItemLessons lesson={p.Lessons}  key={p.Id}/>);
+            <ItemLessons 
+                lesson={p.Lessons} 
+                lessonId={p.LessonsId} 
+                key={p.Id}/>);
 
         return(
             <div className={style.scroolBlock}>

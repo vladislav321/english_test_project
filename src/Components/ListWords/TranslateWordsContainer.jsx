@@ -12,9 +12,10 @@ class TranslateWordsContainer extends Component {
     {
         let lessonsParam = this.props.match.params.lesson;
         if(!lessonsParam){
-            this.props.getWordFromLessonByNumber("1", 0);
+            this.props.getWordFromLessonByNumber(1, 0);
         }else{
-            this.props.getWordFromLessonByNumber(lessonsParam, 0);
+            let lessonId = parseInt(lessonsParam);
+            this.props.getWordFromLessonByNumber(lessonId, 0);
         }
        
         

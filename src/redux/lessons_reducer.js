@@ -1,4 +1,4 @@
-import WordsRepositorySingelton from './../WordsRepository/WordsRepositorySingelton';
+import {WordsController} from './../WordsRepositoryFunc/WordsController';
 
 const GET_LIST_LESSONS = "GET_LIST_LESSONS";
 
@@ -11,10 +11,10 @@ const LesssonsReducer = (state, action) => {
     switch(action.type)
     {
         case GET_LIST_LESSONS:
-            return {...state, sortListLessons: WordsRepositorySingelton.getInstance().getListLessons() }
+            return {...state, sortListLessons: WordsController.getListLessons() }
 
         default :
-            return {...state, sortListLessons: WordsRepositorySingelton.getInstance().getListLessons() }  
+            return {...state, sortListLessons: WordsController.getListLessons() }  
     }
 
 }

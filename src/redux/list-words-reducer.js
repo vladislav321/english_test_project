@@ -1,5 +1,5 @@
 import { UserAPI } from "../api/api";
-import WordsRepositorySingelton from './../WordsRepository/WordsRepositorySingelton';
+import WordsRepository from './../WordsRepositoryFunc/WordsRepository';
 
 const SET_LIST_WORDS = "SET_LIST_WORDS";
 const GET_LIST_WORDS = "GET_LIST_WORDS";
@@ -14,14 +14,14 @@ const ListWordsReducer = (state = initState, action) => {
     switch(action.type)
     {
         case SET_LIST_WORDS:
-            WordsRepositorySingelton.getInstance().setList(action.list);
+            WordsRepository.getInstance().setList(action.list);
             return {...state, words: action.list};
 
         case GET_LIST_WORDS:
-            return {...state, words: WordsRepositorySingelton.getInstance().getList() };
+            return {...state, words: WordsRepository.getInstance().getList() };
 
         case CLEAR_LIST_REPO:
-            WordsRepositorySingelton.getInstance().ClearRepo();    
+            WordsRepository.getInstance().clearRepo();    
             return state;
         
         default: return state;
@@ -36,7 +36,7 @@ export const clearRepo = () => ({type: CLEAR_LIST_REPO});
 
 export const getListWords = () => (dispatch) => {
 
-    if(WordsRepositorySingelton.getInstance().isListEmpty())
+    if(WordsRepository.getInstance().isNullOrEmptyListWords())
     {
         UserAPI.getWordsList().then(response => {
             dispatch( setList(response.data) );

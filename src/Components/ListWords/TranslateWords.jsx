@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import style from './TranslateWords.module.css';
 
 const ListWords = (props) => {
- 
+  
     let lesson = !props.model ? "---" : props.model.Lessons;
     let wordsCount = !props.model ? 0 : props.model.WordsCount;
     let word = !props.model ? "---" : props.model.Ru;
     let wordTranslate = !props.model ? "---" : props.model.En;
+    let lessonId = !props.model ? 0 : props.model.LessonsId;
   
     let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
@@ -20,14 +21,14 @@ const ListWords = (props) => {
 
     const onShowTranslate = () => setShowTranslate(isShowTranslate = !isShowTranslate);
     const onTextChange = (e) => setTextTranslate(e.currentTarget.value);
-    const onNextLesson = () => props.getNextLesson(lesson);
-    const onPreviusLesson = () =>  props.getPreviusLesson(lesson);
-    const onRepeatLesson = () => props.getWordFromLessonByNumber(lesson, 0);
+    const onNextLesson = () => props.getNextLesson(lessonId);
+    const onPreviusLesson = () =>  props.getPreviusLesson(lessonId);
+    const onRepeatLesson = () => props.getWordFromLessonByNumber(lessonId, 0);
 
     const onCheckResult = () => {
         if(textTranslate === wordTranslate)
         {
-            props.getWordFromLessonByNumber(lesson, wordsCount);
+            props.getWordFromLessonByNumber(lessonId, wordsCount);
         }
         else
             setResultCheck(false);
