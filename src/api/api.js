@@ -8,6 +8,6 @@ const instance = axios.create({
 export const UserAPI = {
     getWordsList()
     {
-        return instance.get();
+        return instance.get().then(response => response.data);
     }
 }
