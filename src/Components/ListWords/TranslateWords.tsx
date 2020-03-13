@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import style from './TranslateWords.module.css';
-import { WordsDTO } from '../../Model/WordsDTO';
+import {MapStatePropsType, MapDispatchPropsType} from './../../Types/TranslateWords/translate-words-types';
 
-type PropsType = {
-    model: WordsDTO
-    getWordFromLessonByNumber: (lessonId: number, wordsCount: number) => void
-    getNextLesson: (lessonId: number) => void
-    getPreviusLesson: (lessonId: number) => void
-}
-
+type PropsType = MapStatePropsType & MapDispatchPropsType;
 
 const ListWords: React.FC<PropsType> = ({
     model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson}) => {

@@ -4,25 +4,8 @@ import { connect } from 'react-redux';
 import {getWordFromLessonByNumber , getNextLesson, getPreviusLesson} from '../../redux/translate_words_reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { WordsDTO } from '../../Model/WordsDTO';
 import { AppStateType } from '../../redux/redux-store';
-
-
-
-
-type MapStatePropsType = {
-    model: WordsDTO
-}
-
-type MapDispatchPropsType = {
-    getWordFromLessonByNumber: (lessonId: number, wordsCount: number) => void
-    getNextLesson: (lessonId: number) => void
-    getPreviusLesson: (lessonId: number) => void
-}
-
-type OwnPropsType = {
-    match: any
-}
+import {MapStatePropsType, MapDispatchPropsType, OwnPropsType} from  './../../Types/TranslateWords/translate-words-types';
 
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
 

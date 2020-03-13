@@ -23,3 +23,17 @@ export type GetPreviusLessonActionTypes = {
     type: typeof PREVIUS_LESSON,
     lessonId: number
 }
+
+export type MapStatePropsType = {
+    model: WordsDTO
+}
+
+export type MapDispatchPropsType = {
+    getWordFromLessonByNumber: (lessonId: number, wordsCount: number) => void
+    getNextLesson: (lessonId: number) => void
+    getPreviusLesson: (lessonId: number) => void
+}
+
+export type OwnPropsType = {
+    match: any
+}

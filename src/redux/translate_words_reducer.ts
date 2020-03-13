@@ -3,7 +3,7 @@ import { InitStateType , GET_WORD_BY_NUMBER,
         NEXT_LESSON, PREVIUS_LESSON, 
         GetWordFromLessonByNumberActionTypes,
         GetNextLessonActionTypes,
-        GetPreviusLessonActionTypes } from './TypesRedux/translate-words-types';
+        GetPreviusLessonActionTypes } from '../Types/TranslateWords/translate-words-types';
 import { WordsDTO } from '../Model/WordsDTO';
 import { WordsController } from '../WordsRepositoryFunc/WordsController';
 
