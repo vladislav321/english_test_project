@@ -10,6 +10,10 @@ let reducers = combineReducers({
     translateWordsReducer : translateWordsReducer,
 });
 
+
+type RootReducerType = typeof reducers;
+export type AppStateType = ReturnType<RootReducerType>;
+
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;

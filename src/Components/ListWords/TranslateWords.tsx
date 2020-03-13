@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import style from './TranslateWords.module.css';
+import { WordsDTO } from '../../Model/WordsDTO';
 
-const ListWords = (props) => {
-  
-    let lesson = !props.model ? "---" : props.model.Lessons;
-    let wordsCount = !props.model ? 0 : props.model.WordsCount;
-    let word = !props.model ? "---" : props.model.Ru;
-    let wordTranslate = !props.model ? "---" : props.model.En;
-    let lessonId = !props.model ? 0 : props.model.LessonsId;
+type PropsType = {
+    model: WordsDTO
+    getWordFromLessonByNumber: (lessonId: number, wordsCount: number) => void
+    getNextLesson: (lessonId: number) => void
+    getPreviusLesson: (lessonId: number) => void
+}
+
+
+const ListWords: React.FC<PropsType> = ({
+    model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson}) => {
   
     let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
@@ -17,24 +21,24 @@ const ListWords = (props) => {
         setShowTranslate(false);
         setTextTranslate("");
         setResultCheck(true);
-    }, [props.model] );
+    }, [model] );
 
     const onShowTranslate = () => setShowTranslate(isShowTranslate = !isShowTranslate);
-    const onTextChange = (e) => setTextTranslate(e.currentTarget.value);
-    const onNextLesson = () => props.getNextLesson(lessonId);
-    const onPreviusLesson = () =>  props.getPreviusLesson(lessonId);
-    const onRepeatLesson = () => props.getWordFromLessonByNumber(lessonId, 0);
+    const onTextChange = (e: any) => setTextTranslate(e.currentTarget.value);
+    const onNextLesson = () => getNextLesson(model.LessonsId);
+    const onPreviusLesson = () =>  getPreviusLesson(model.LessonsId);
+    const onRepeatLesson = () => getWordFromLessonByNumber(model.LessonsId, 0);
 
     const onCheckResult = () => {
-        if(textTranslate === wordTranslate)
+        if(textTranslate === model.En)
         {
-            props.getWordFromLessonByNumber(lessonId, wordsCount);
+            getWordFromLessonByNumber(model.LessonsId, model.WordsCount);
         }
         else
             setResultCheck(false);
         }
 
-    const hendleKeyDoew = (e) => {
+    const hendleKeyDoew = (e:any) => {
         if(e.key === 'Enter') onCheckResult();
     }
     
@@ -43,7 +47,7 @@ const ListWords = (props) => {
 
             <div className={style.lessonTitle}>
                 <span>
-                    Lesson: {lesson}
+                    Lesson: {model.Lessons}
                 </span>
             </div>
 
@@ -54,10 +58,10 @@ const ListWords = (props) => {
             </div>
 
             <div className={style.wordText}> 
-                 {word} 
+                 {model.Ru} 
             </div>
             <div className={style.wordTranslate} onDoubleClick={onShowTranslate}>
-                {!isShowTranslate ? "Показать перевод" : wordTranslate}
+                {!isShowTranslate ? "Показать перевод" : model.En}
             </div>
 
 

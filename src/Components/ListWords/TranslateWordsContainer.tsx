@@ -4,8 +4,29 @@ import { connect } from 'react-redux';
 import {getWordFromLessonByNumber , getNextLesson, getPreviusLesson} from '../../redux/translate_words_reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
+import { WordsDTO } from '../../Model/WordsDTO';
+import { AppStateType } from '../../redux/redux-store';
 
-class TranslateWordsContainer extends Component {
+
+
+
+type MapStatePropsType = {
+    model: WordsDTO
+}
+
+type MapDispatchPropsType = {
+    getWordFromLessonByNumber: (lessonId: number, wordsCount: number) => void
+    getNextLesson: (lessonId: number) => void
+    getPreviusLesson: (lessonId: number) => void
+}
+
+type OwnPropsType = {
+    match: any
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+
+class TranslateWordsContainer extends Component<PropsType> {
 
 
     componentDidMount()
@@ -23,13 +44,17 @@ class TranslateWordsContainer extends Component {
 
     render(){
         return(
-            <TranslateWords {...this.props}/>
+            <TranslateWords 
+                model={this.props.model}
+                getNextLesson={this.props.getNextLesson}
+                getPreviusLesson={this.props.getPreviusLesson}
+                getWordFromLessonByNumber={this.props.getWordFromLessonByNumber}/>
         );
     }
 
 } 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     model: state.translateWordsReducer.model,
 });
 

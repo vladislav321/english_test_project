@@ -1,4 +1,3 @@
-import { type } from "os";
 import { WordsDTO } from "../../Model/WordsDTO";
 
 export const GET_WORD_BY_NUMBER = "GET_WORD_BY_NUMBER";
