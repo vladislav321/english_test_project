@@ -12,12 +12,12 @@ let initState : InitStateType = {
     model: new WordsDTO().setId("1").setLessonId(1).setWordsCount(1).setLesson("---").setEn("---").setRu("---")
 }
 
-const TranslateWordsReducer = (state: InitStateType = initState, action: any) : InitStateType => {
+const TranslateWordsReducer = (state: InitStateType = initState, action: ActionsTypes) : InitStateType => {
 
     switch(action.type)
     {
         case GET_WORD_BY_NUMBER:
-            return {...state, model: new WordsController().getWordsFromLesson(action.lessonId,action.number ) };
+            return {...state, model: new WordsController().getWordsFromLesson(action.lessonId, action.number ) };
 
         case NEXT_LESSON:
             return {...state, model: new WordsController().getNextLesson(action.lessonId)};
@@ -29,6 +29,8 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: any) : 
             return {...state, model: new WordsController().getWordsFromLesson(1, 0) }    
     }
 }
+
+type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes;
 
 export const getWordFromLessonByNumber = (lessonId: number, number: number):GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number})
 export const getNextLesson = (lessonId: number): GetNextLessonActionTypes => ({type: NEXT_LESSON, lessonId});

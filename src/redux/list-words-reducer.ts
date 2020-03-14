@@ -14,7 +14,7 @@ let initState : InitStateType = {
     words: Array<WordsDTO>()
 }
 
-const ListWordsReducer = (state : InitStateType = initState , action: any): InitStateType => {
+const ListWordsReducer = (state : InitStateType = initState , action: ActionsType): InitStateType => {
 
     switch(action.type)
     {
@@ -33,7 +33,7 @@ const ListWordsReducer = (state : InitStateType = initState , action: any): Init
     }
 }
 
-
+type ActionsType = SetListActionType | GetListActionType | ClearRepoActionType;
 
 export const setList = (list: Array<WordsDTO>): SetListActionType => ({type: SET_LIST_WORDS, list});
 export const getList = (): GetListActionType => ({type: GET_LIST_WORDS});

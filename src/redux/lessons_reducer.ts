@@ -7,7 +7,7 @@ let initState: InitStateType = {
     sortListLessons: Array<WordsDTO>()
 }
 
-const LesssonsReducer = (state: InitStateType = initState, action: any): InitStateType => {
+const LesssonsReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
 
     switch(action.type)
     {
@@ -19,6 +19,8 @@ const LesssonsReducer = (state: InitStateType = initState, action: any): InitSta
     }
 
 }
+
+type ActionsType = GetListLessonsActionType;
 
 export const getListLessons = (): GetListLessonsActionType => ({type: GET_LIST_LESSONS});
 
