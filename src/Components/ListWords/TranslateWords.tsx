@@ -7,6 +7,8 @@ type PropsType = MapStatePropsType & MapDispatchPropsType;
 const ListWords: React.FC<PropsType> = ({
     model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson}) => {
   
+    console.log(model.Lessons);
+
     let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
     let [resultCheck, setResultCheck] = useState(true);

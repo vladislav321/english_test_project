@@ -8,15 +8,15 @@ class WordsController {
         if(currentLessonId < this.getListLength())
             return this.getWordsFromLesson(currentLessonId + 1, 0);
 
-        return this.getWordsFromLesson(0, 0);
+        return this.getWordsFromLesson(1, 0);
     }
 
     public getPreviusLesson(currentLessonId: number): WordsDTO
     {
-        if(currentLessonId >= this.getListLength())  
+        if(currentLessonId > 1)  
             return this.getWordsFromLesson(currentLessonId - 1, 0);
 
-        return this.getWordsFromLesson(0, 0);
+        return this.getWordsFromLesson(1, 0);
     }
 
     public getListLessons(): Array<WordsDTO>
@@ -55,7 +55,7 @@ class WordsController {
 
     private getListLength(): number
     {
-        return this.getAllList.length;
+        return this.getAllList().length;
     }
 
     private getEmptyModel(lessonId:number, wordsCount:number): WordsDTO
