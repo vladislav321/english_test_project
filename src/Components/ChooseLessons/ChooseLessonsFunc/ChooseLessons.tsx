@@ -6,6 +6,7 @@ import {MapStatePropsType} from './../../../Types/ListLessons/lessons-types';
 type PropsType = MapStatePropsType;
 
 const ChooseLessons: React.FC<PropsType> = ({sortListLessons}) => {
+    console.log(sortListLessons)
         let listLessons = sortListLessons.map( p => 
             <ItemLessons 
                 lesson={p.Lessons}

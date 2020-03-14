@@ -19,8 +19,22 @@ class NotKnowledgeOfWords {
     {
         let resultFind = this.listWords.find(f=>f.En === model.En);
         if(!resultFind) return;
-
+        model.SucssesCount = 5;
         this.listWords.push(model);
+    }
+
+    public decrementSucssesCount(model: WordsDTO):void {
+        if(model.SucssesCount > 0) 
+        {
+            model.SucssesCount = model.SucssesCount - 1;
+        }
+        else
+        {
+            const index = this.listWords.indexOf(model, 0);
+            if (index > -1) {
+                this.listWords.splice(index, 1);
+            }
+        }
     }
 
     public getListWords(): Array<WordsDTO>

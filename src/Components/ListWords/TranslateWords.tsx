@@ -5,9 +5,7 @@ import {MapStatePropsType, MapDispatchPropsType} from './../../Types/TranslateWo
 type PropsType = MapStatePropsType & MapDispatchPropsType;
 
 const ListWords: React.FC<PropsType> = ({
-    model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson}) => {
-  
-    console.log(model.Lessons);
+    model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson, getFirstModel}) => {
 
     let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");

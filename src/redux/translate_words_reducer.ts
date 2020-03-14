@@ -1,12 +1,20 @@
 
 import { InitStateType , GET_WORD_BY_NUMBER,
-        NEXT_LESSON, PREVIUS_LESSON, 
-        GetWordFromLessonByNumberActionTypes,
-        GetNextLessonActionTypes,
-        GetPreviusLessonActionTypes } from '../Types/TranslateWords/translate-words-types';
-import { WordsDTO } from '../Model/WordsDTO';
-import { WordsController } from '../WordsRepositoryFunc/WordsController';
+        NEXT_LESSON, PREVIUS_LESSON, GET_FIRST_MODEL,
+        GetWordFromLessonByNumberActionTypes, GetNextLessonActionTypes,
+        GetPreviusLessonActionTypes , GetFirstModelActionType} from '../Types/TranslateWords/translate-words-types';
 
+import { WordsDTO } from '../Model/WordsDTO';
+import  {WordsController} from '../WordsRepositoryFunc/WordsController';
+import WordsRepository from './../WordsRepositoryFunc/WordsRepository';
+import { NotKnowledgeOfWords } from '../WordsRepositoryFunc/NotKnowledgeOfWords';
+import {NotKnowledgeOfWordsController} from '../WordsRepositoryFunc/NotKnowledgeOfWordsController';
+import { WrapperLocalStorage } from '../Model/WrapperLocalStorage/WrapperLocalStorage';
+
+// -- Init Object --
+let wordsController: WordsController = new WordsController(WordsRepository.getInstance().getList());
+
+// -- Init Object --
 
 let initState : InitStateType = {
     model: new WordsDTO().setId("1").setLessonId(1).setWordsCount(1).setLesson("---").setEn("---").setRu("---")
@@ -17,24 +25,28 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
     switch(action.type)
     {
         case GET_WORD_BY_NUMBER:
-            return {...state, model: new WordsController().getWordsFromLesson(action.lessonId, action.number ) };
+            return {...state, model: wordsController.getWordsFromLesson(action.lessonId, action.number ) };
 
         case NEXT_LESSON:
-            return {...state, model: new WordsController().getNextLesson(action.lessonId)};
+            return {...state, model: wordsController.getNextLesson(action.lessonId)};
         
         case PREVIUS_LESSON:
-            return {...state, model: new WordsController().getPreviusLesson(action.lessonId)};
+            return {...state, model: wordsController.getPreviusLesson(action.lessonId)};
+
+        case GET_FIRST_MODEL:
+            return {...state, model: wordsController.getLessonModel( action.lessonId, 0 )}    
 
         default :
-            return {...state, model: new WordsController().getWordsFromLesson(1, 0) }    
+            return state;    
     }
 }
 
-type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes;
+type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes | GetFirstModelActionType;
 
-export const getWordFromLessonByNumber = (lessonId: number, number: number):GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number})
+export const getWordFromLessonByNumber = (lessonId: number, number: number): GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number})
 export const getNextLesson = (lessonId: number): GetNextLessonActionTypes => ({type: NEXT_LESSON, lessonId});
 export const getPreviusLesson = (lessonId: number): GetPreviusLessonActionTypes => ({type: PREVIUS_LESSON, lessonId});
+export const getFirstModel = (lessonId: number): GetFirstModelActionType => ({type: GET_FIRST_MODEL, lessonId})
 
 
 export default TranslateWordsReducer;

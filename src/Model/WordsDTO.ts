@@ -7,6 +7,7 @@
     public Ru: string;
     public WordsCount: number;
     public LessonsId: number;
+    public SucssesCount: number = 0;
 
     constructor(
         theId: string = "---",

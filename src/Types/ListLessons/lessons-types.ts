@@ -10,4 +10,10 @@ export type InitStateType = {
     sortListLessons: Array<WordsDTO>
 }
 
-export type MapStatePropsType = InitStateType;
+export type MapDispatchPropsType = {
+    getListLessons: () => void
+}
+
+export type MapStatePropsType = {
+    sortListLessons: Array<WordsDTO>
+}

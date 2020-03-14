@@ -1,29 +1,37 @@
-import WordsRepository from './WordsRepository';
 import { WordsDTO } from '../Model/WordsDTO';
 
 class WordsController {
 
-    public getNextLesson(currentLessonId: number): WordsDTO
-    {
-        if(currentLessonId < this.getListLength())
-            return this.getWordsFromLesson(currentLessonId + 1, 0);
+    private listWords: Array<WordsDTO> = new Array<WordsDTO>();
+    private currentListLesson: Array<WordsDTO> = new Array<WordsDTO>();
 
-        return this.getWordsFromLesson(1, 0);
+    constructor(listWords: Array<WordsDTO> )
+    {
+        this.listWords = listWords;
+
+        this.currentListLesson = this.getListLessonsById(1);
+
+        console.log("-----WordsController Init contructor ----");
     }
 
-    public getPreviusLesson(currentLessonId: number): WordsDTO
-    {
-        if(currentLessonId > 1)  
-            return this.getWordsFromLesson(currentLessonId - 1, 0);
-
-        return this.getWordsFromLesson(1, 0);
+    public getNextLesson(currentLessonId: number): WordsDTO {
+        if(currentLessonId < this.listWords.length)
+            return this.getLessonModel(currentLessonId + 1, 0);
+       
+        return this.getLessonModel(1, 0);
     }
 
-    public getListLessons(): Array<WordsDTO>
-    {
+    public getPreviusLesson(currentLessonId: number): WordsDTO {
+        if(currentLessonId > 1) 
+            return this.getLessonModel(currentLessonId - 1, 0);
+
+        return this.getLessonModel(1, 0);
+    }
+
+    public getListLessons(): Array<WordsDTO> {
         let listLessons = new Array<WordsDTO>()
         let previusLesson = "";
-        let list = this.getAllList();
+        let list = this.listWords;
     
         for(let i = 0; i < list.length; i++)
         {
@@ -36,30 +44,24 @@ class WordsController {
         return listLessons;
     }
 
-    public getWordsFromLesson(lessonId: number, wordsCount: number = 0): WordsDTO
-    {
-        let list = this.getListLessonsById(lessonId);
+    public getWordsFromLesson(lessonId: number, wordsCount: number = 0): WordsDTO {
+        let list = this.currentListLesson;
         let model = (list.length - 1) < wordsCount ? this.getEmptyModel(lessonId, wordsCount) : list[wordsCount];
         return model;
     }
 
-    private getListLessonsById(lessonId: number): Array<WordsDTO>
-    {
-        return this.getAllList().filter(l => l.LessonsId === lessonId);
+    public setCurrentWordsModel(model: WordsDTO) : void {}
+
+    public getLessonModel(lessonId: number, wordsCount: number): WordsDTO {
+        this.currentListLesson = this.getListLessonsById(lessonId);
+        return this.getWordsFromLesson(lessonId, wordsCount);
     }
 
-    private getAllList(): Array<WordsDTO>
-    {
-       return WordsRepository.getInstance().getList();
+    private getListLessonsById(lessonId: number): Array<WordsDTO> {
+        return this.listWords.filter(l => l.LessonsId === lessonId);
     }
 
-    private getListLength(): number
-    {
-        return this.getAllList().length;
-    }
-
-    private getEmptyModel(lessonId:number, wordsCount:number): WordsDTO
-    {
+    private getEmptyModel(lessonId:number, wordsCount:number): WordsDTO {
         return new WordsDTO().setId("1").setWordsCount(wordsCount).setLessonId(lessonId);
     }
 }
