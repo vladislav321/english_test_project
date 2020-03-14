@@ -9,3 +9,5 @@ export type GetListLessonsActionType = {
 export type InitStateType = {
     sortListLessons: Array<WordsDTO>
 }
+
+export type MapStatePropsType = InitStateType;

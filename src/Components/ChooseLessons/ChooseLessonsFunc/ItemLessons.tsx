@@ -3,7 +3,12 @@ import style from './ChooseLessons.module.css';
 import { NavLink } from 'react-router-dom';
 import ProgressIndicators from '../../common/ProgressIdicators/ProgressIndicators';
 
-const ItemLessons = ({lessonId, lesson}) => {
+type PropsType = {
+    lessonId: number
+    lesson: string
+}
+
+const ItemLessons: React.FC<PropsType> = ({lessonId, lesson}) => {
 
     return(
         <div className={style.lessonsItem}>
@@ -15,7 +20,7 @@ const ItemLessons = ({lessonId, lesson}) => {
                 </div>
             </NavLink>
             <div  className={style.progressIndecator} >
-                <ProgressIndicators  />
+                <ProgressIndicators persent={20} />
             </div>
            
         </div>

@@ -1,4 +1,4 @@
-import { GET_LIST_LESSONS, InitStateType, GetListLessonsActionType } from "./TypesRedux/lessons-types";
+import { GET_LIST_LESSONS, InitStateType, GetListLessonsActionType } from "../Types/ListLessons/lessons-types";
 import { WordsDTO } from "../Model/WordsDTO";
 import { WordsController } from "../WordsRepositoryFunc/WordsController";
 
