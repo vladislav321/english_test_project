@@ -1,7 +1,7 @@
-import { IWrapperLocalStorage } from './../Model/WrapperLocalStorage/IWrapperLocalStarage';
+import { IWrapperLocalStorage } from '../Model/WrapperLocalStorage/IWrapperLocalStarage';
 import { WordsDTO } from "../Model/WordsDTO";
 
-class NotKnowledgeOfWords {
+class InCorectWords {
 
     private listWords: Array<WordsDTO> = new Array<WordsDTO>();
     private keyLocalStorage: string = "NotKnowledgeOfWords";
@@ -59,4 +59,4 @@ class NotKnowledgeOfWords {
 }
 
 
-export {NotKnowledgeOfWords}
+export {InCorectWords}

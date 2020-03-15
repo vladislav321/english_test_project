@@ -10,13 +10,13 @@ import {GET_WORD_BY_NUMBER,
 import { WordsDTO } from '../Model/WordsDTO';
 import  {WordsController} from '../WordsRepositoryFunc/WordsController';
 import WordsRepository from './../WordsRepositoryFunc/WordsRepository';
-import { NotKnowledgeOfWords } from '../WordsRepositoryFunc/NotKnowledgeOfWords';
-import {NotKnowledgeOfWordsController} from '../WordsRepositoryFunc/NotKnowledgeOfWordsController';
+import { InCorectWords } from '../WordsRepositoryFunc/InCorectWords';
 import { WrapperLocalStorage } from '../Model/WrapperLocalStorage/WrapperLocalStorage';
 
 // -- Init Object --
+
 let wordsController: WordsController = new WordsController(WordsRepository.getInstance().getList());
-let notKnowledgeOfWords: NotKnowledgeOfWords = new NotKnowledgeOfWords(new WrapperLocalStorage());
+let inCorectWords: InCorectWords = new InCorectWords(new WrapperLocalStorage());
 
 // -- Init Object --
 
@@ -41,11 +41,11 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
             return {...state, model: wordsController.getLessonModel( action.lessonId, 0 )}    
 
         case SET_WRONG_WORDS:
-            notKnowledgeOfWords.setModel(action.model);
+            inCorectWords.setModel(action.model);
             return state;    
 
         case SAVE_WRONG_WORDS:
-            notKnowledgeOfWords.saveListInLocalStorage();
+            inCorectWords.saveListInLocalStorage();
             return state;    
             
         default :

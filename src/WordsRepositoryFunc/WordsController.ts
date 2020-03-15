@@ -50,11 +50,13 @@ class WordsController {
         return model;
     }
 
-    public setCurrentWordsModel(model: WordsDTO) : void {}
-
     public getLessonModel(lessonId: number, wordsCount: number): WordsDTO {
         this.currentListLesson = this.getListLessonsById(lessonId);
         return this.getWordsFromLesson(lessonId, wordsCount);
+    }
+
+    public updateListWords(list: Array<WordsDTO>): void {
+        this.listWords = list;
     }
 
     private getListLessonsById(lessonId: number): Array<WordsDTO> {
