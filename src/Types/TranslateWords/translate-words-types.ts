@@ -1,3 +1,4 @@
+import { TypeCurrectList } from './../../Enum/TypeCurrectList';
 import { WordsDTO } from "../../Model/WordsDTO";
 
 export const GET_WORD_BY_NUMBER = "GET_WORD_BY_NUMBER";
@@ -6,6 +7,7 @@ export const PREVIUS_LESSON = "PREVIUS_LESSON";
 export const GET_FIRST_MODEL = "GET_FIRST_MODEL";
 export const SET_WRONG_WORDS = "SET_INCURRECT_WORDS";
 export const SAVE_WRONG_WORDS = "SAVE_WRONG_WORDS";
+export const UPDATE_CURRECT_LIST = "UPDATE_CURRECT_LIST";
 
 export type InitStateType = {
     model: WordsDTO
@@ -46,6 +48,11 @@ export type SaveWrongWordsActionType = {
     type: typeof SAVE_WRONG_WORDS
 }
 
+export type UpdateCurrectListActionType = {
+    type: typeof UPDATE_CURRECT_LIST
+    typeList: TypeCurrectList
+}
+
 export type MapDispatchPropsType = {
     getWordFromLessonByNumber: (lessonId: number, wordsCount: number, model: WordsDTO) => void
     getNextLesson: (lessonId: number) => void
@@ -53,6 +60,7 @@ export type MapDispatchPropsType = {
     getFirstModel: (lessonId: number) => void
     setWrongWords: (model: WordsDTO) => void
     saveWrongWods: () => void
+    updateCurrectList: () => void
 }
 
 export type OwnPropsType = {

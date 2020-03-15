@@ -1,11 +1,12 @@
+import { TypeCurrectList } from './../Enum/TypeCurrectList';
 
 import {GET_WORD_BY_NUMBER,
         NEXT_LESSON, PREVIUS_LESSON, GET_FIRST_MODEL,
-        SET_WRONG_WORDS, SAVE_WRONG_WORDS,
+        SET_WRONG_WORDS, SAVE_WRONG_WORDS,UPDATE_CURRECT_LIST,
         InitStateType,
         GetWordFromLessonByNumberActionTypes, GetNextLessonActionTypes,
         GetPreviusLessonActionTypes , GetFirstModelActionType,
-        SetWrongWordsActionType, SaveWrongWordsActionType} from '../Types/TranslateWords/translate-words-types';
+        SetWrongWordsActionType, SaveWrongWordsActionType, UpdateCurrectListActionType} from '../Types/TranslateWords/translate-words-types';
 
 import { WordsDTO } from '../Model/WordsDTO';
 import  {WordsController} from '../WordsRepositoryFunc/WordsController';
@@ -47,15 +48,23 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
 
         case SAVE_WRONG_WORDS:
             inCorectWords.saveListInLocalStorage();
-            return state;    
+            return state;  
             
+        case UPDATE_CURRECT_LIST:
+            if(action.typeList === TypeCurrectList.Currect)
+                wordsController.updateListWords(WordsRepository.getInstance().getList());    
+            else
+                wordsController.updateListWords(inCorectWords.getListWords());
+
+            return state;
+
         default :
             return state;    
     }
 }
 
 type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes | 
-GetFirstModelActionType | SetWrongWordsActionType | SaveWrongWordsActionType;
+GetFirstModelActionType | SetWrongWordsActionType | SaveWrongWordsActionType | UpdateCurrectListActionType;
 
 export const getWordFromLessonByNumber = (lessonId: number, number: number, model: WordsDTO): GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number, model})
 export const getNextLesson = (lessonId: number): GetNextLessonActionTypes => ({type: NEXT_LESSON, lessonId});
@@ -63,6 +72,7 @@ export const getPreviusLesson = (lessonId: number): GetPreviusLessonActionTypes 
 export const getFirstModel = (lessonId: number): GetFirstModelActionType => ({type: GET_FIRST_MODEL, lessonId});
 export const setWrongWords = (model: WordsDTO): SetWrongWordsActionType => ({type: SET_WRONG_WORDS, model});
 export const saveWrongWods = (): SaveWrongWordsActionType => ({type: SAVE_WRONG_WORDS});
+export const updateCurrectList = (typeList: TypeCurrectList): UpdateCurrectListActionType => ({type: UPDATE_CURRECT_LIST, typeList})
 
 export default TranslateWordsReducer;
 
