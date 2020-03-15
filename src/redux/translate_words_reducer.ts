@@ -1,8 +1,11 @@
 
-import { InitStateType , GET_WORD_BY_NUMBER,
+import {GET_WORD_BY_NUMBER,
         NEXT_LESSON, PREVIUS_LESSON, GET_FIRST_MODEL,
+        SET_WRONG_WORDS, SAVE_WRONG_WORDS,
+        InitStateType,
         GetWordFromLessonByNumberActionTypes, GetNextLessonActionTypes,
-        GetPreviusLessonActionTypes , GetFirstModelActionType} from '../Types/TranslateWords/translate-words-types';
+        GetPreviusLessonActionTypes , GetFirstModelActionType,
+        SetWrongWordsActionType, SaveWrongWordsActionType} from '../Types/TranslateWords/translate-words-types';
 
 import { WordsDTO } from '../Model/WordsDTO';
 import  {WordsController} from '../WordsRepositoryFunc/WordsController';
@@ -13,6 +16,7 @@ import { WrapperLocalStorage } from '../Model/WrapperLocalStorage/WrapperLocalSt
 
 // -- Init Object --
 let wordsController: WordsController = new WordsController(WordsRepository.getInstance().getList());
+let notKnowledgeOfWords: NotKnowledgeOfWords = new NotKnowledgeOfWords(new WrapperLocalStorage());
 
 // -- Init Object --
 
@@ -36,18 +40,28 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
         case GET_FIRST_MODEL:
             return {...state, model: wordsController.getLessonModel( action.lessonId, 0 )}    
 
+        case SET_WRONG_WORDS:
+            notKnowledgeOfWords.setModel(action.model);
+            return state;    
+
+        case SAVE_WRONG_WORDS:
+            notKnowledgeOfWords.saveListInLocalStorage();
+            return state;    
+            
         default :
             return state;    
     }
 }
 
-type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes | GetFirstModelActionType;
+type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes | 
+GetFirstModelActionType | SetWrongWordsActionType | SaveWrongWordsActionType;
 
 export const getWordFromLessonByNumber = (lessonId: number, number: number): GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number})
 export const getNextLesson = (lessonId: number): GetNextLessonActionTypes => ({type: NEXT_LESSON, lessonId});
 export const getPreviusLesson = (lessonId: number): GetPreviusLessonActionTypes => ({type: PREVIUS_LESSON, lessonId});
-export const getFirstModel = (lessonId: number): GetFirstModelActionType => ({type: GET_FIRST_MODEL, lessonId})
-
+export const getFirstModel = (lessonId: number): GetFirstModelActionType => ({type: GET_FIRST_MODEL, lessonId});
+export const setWrongWords = (model: WordsDTO): SetWrongWordsActionType => ({type: SET_WRONG_WORDS, model});
+export const saveWrongWods = (): SaveWrongWordsActionType => ({type: SAVE_WRONG_WORDS});
 
 export default TranslateWordsReducer;
 

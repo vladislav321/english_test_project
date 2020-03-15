@@ -5,7 +5,7 @@ import {MapStatePropsType, MapDispatchPropsType} from './../../Types/TranslateWo
 type PropsType = MapStatePropsType & MapDispatchPropsType;
 
 const ListWords: React.FC<PropsType> = ({
-    model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson, getFirstModel}) => {
+    model, getWordFromLessonByNumber, getNextLesson, getPreviusLesson, setWrongWords}) => {
 
     let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
@@ -17,11 +17,17 @@ const ListWords: React.FC<PropsType> = ({
         setResultCheck(true);
     }, [model] );
 
-    const onShowTranslate = () => setShowTranslate(isShowTranslate = !isShowTranslate);
+   
     const onTextChange = (e: any) => setTextTranslate(e.currentTarget.value);
     const onNextLesson = () => getNextLesson(model.LessonsId);
     const onPreviusLesson = () =>  getPreviusLesson(model.LessonsId);
     const onRepeatLesson = () => getWordFromLessonByNumber(model.LessonsId, 0);
+
+
+    const onShowTranslate = () => {
+        setWrongWords(model);
+        setShowTranslate(isShowTranslate = !isShowTranslate);
+    } 
 
     const onCheckResult = () => {
         if(textTranslate === model.En)

@@ -11,16 +11,19 @@ class NotKnowledgeOfWords {
     constructor(wrapperLocalStorage: IWrapperLocalStorage)
     {
         this.wrapperLocalStorage = wrapperLocalStorage;
-
+        console.log("--- NotKnowledgeOfWords constructor --")
         this.initList();
+
+        console.log("--- list words --" + this.listWords.length);
     }
 
     public setModel(model: WordsDTO) : void 
     {
-        let resultFind = this.listWords.find(f=>f.En === model.En);
-        if(!resultFind) return;
+        let resultFind = this.listWords.find(f=>f.Id === model.Id);
+        if(resultFind) return;
         model.SucssesCount = 5;
         this.listWords.push(model);
+        console.log("setMode: " + model.En);
     }
 
     public decrementSucssesCount(model: WordsDTO):void {
@@ -30,10 +33,7 @@ class NotKnowledgeOfWords {
         }
         else
         {
-            const index = this.listWords.indexOf(model, 0);
-            if (index > -1) {
-                this.listWords.splice(index, 1);
-            }
+            this.listWords = this.listWords.filter(f=> f.Id !== model.Id);
         }
     }
 
@@ -44,6 +44,7 @@ class NotKnowledgeOfWords {
 
     public saveListInLocalStorage(): void 
     {
+        console.log("---saveListInLocalStorage---")
         this.wrapperLocalStorage.setItem(this.keyLocalStorage, JSON.stringify(this.listWords))
     }
 
