@@ -19,6 +19,7 @@ class InCorectWords {
 
     public setModel(model: WordsDTO) : void 
     {
+        console.log("setMode: " + model.SucssesCount);
         let resultFind = this.listWords.find(f=>f.Id === model.Id);
         if(resultFind) return;
         model.SucssesCount = 5;
@@ -27,14 +28,11 @@ class InCorectWords {
     }
 
     public decrementSucssesCount(model: WordsDTO):void {
+      
         if(model.SucssesCount > 0) 
-        {
-            model.SucssesCount = model.SucssesCount - 1;
-        }
-        else
-        {
-            this.listWords = this.listWords.filter(f=> f.Id !== model.Id);
-        }
+             model.SucssesCount = model.SucssesCount - 1;
+
+        console.log("decrementSucssesCount: " + model.SucssesCount);
     }
 
     public getListWords(): Array<WordsDTO>
@@ -44,6 +42,7 @@ class InCorectWords {
 
     public saveListInLocalStorage(): void 
     {
+        this.listWords = this.listWords.filter(f=> f.SucssesCount !== 0);
         console.log("---saveListInLocalStorage---")
         this.wrapperLocalStorage.setItem(this.keyLocalStorage, JSON.stringify(this.listWords))
     }

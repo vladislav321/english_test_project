@@ -29,6 +29,7 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
     switch(action.type)
     {
         case GET_WORD_BY_NUMBER:
+            inCorectWords.decrementSucssesCount(action.model);
             return {...state, model: wordsController.getWordsFromLesson(action.lessonId, action.number ) };
 
         case NEXT_LESSON:
@@ -56,7 +57,7 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
 type ActionsTypes = GetWordFromLessonByNumberActionTypes | GetNextLessonActionTypes | GetPreviusLessonActionTypes | 
 GetFirstModelActionType | SetWrongWordsActionType | SaveWrongWordsActionType;
 
-export const getWordFromLessonByNumber = (lessonId: number, number: number): GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number})
+export const getWordFromLessonByNumber = (lessonId: number, number: number, model: WordsDTO): GetWordFromLessonByNumberActionTypes  => ({type: GET_WORD_BY_NUMBER, lessonId, number, model})
 export const getNextLesson = (lessonId: number): GetNextLessonActionTypes => ({type: NEXT_LESSON, lessonId});
 export const getPreviusLesson = (lessonId: number): GetPreviusLessonActionTypes => ({type: PREVIUS_LESSON, lessonId});
 export const getFirstModel = (lessonId: number): GetFirstModelActionType => ({type: GET_FIRST_MODEL, lessonId});

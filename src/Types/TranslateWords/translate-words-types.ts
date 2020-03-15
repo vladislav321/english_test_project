@@ -14,7 +14,8 @@ export type InitStateType = {
 export type GetWordFromLessonByNumberActionTypes = {
     type: typeof GET_WORD_BY_NUMBER,
     lessonId: number,
-    number: number
+    number: number,
+    model: WordsDTO
 }
 
 export type GetNextLessonActionTypes = {
@@ -46,7 +47,7 @@ export type SaveWrongWordsActionType = {
 }
 
 export type MapDispatchPropsType = {
-    getWordFromLessonByNumber: (lessonId: number, wordsCount: number) => void
+    getWordFromLessonByNumber: (lessonId: number, wordsCount: number, model: WordsDTO) => void
     getNextLesson: (lessonId: number) => void
     getPreviusLesson: (lessonId: number) => void
     getFirstModel: (lessonId: number) => void

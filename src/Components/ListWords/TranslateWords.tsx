@@ -21,7 +21,7 @@ const ListWords: React.FC<PropsType> = ({
     const onTextChange = (e: any) => setTextTranslate(e.currentTarget.value);
     const onNextLesson = () => getNextLesson(model.LessonsId);
     const onPreviusLesson = () =>  getPreviusLesson(model.LessonsId);
-    const onRepeatLesson = () => getWordFromLessonByNumber(model.LessonsId, 0);
+    const onRepeatLesson = () => getWordFromLessonByNumber(model.LessonsId, 0, model);
 
 
     const onShowTranslate = () => {
@@ -32,7 +32,7 @@ const ListWords: React.FC<PropsType> = ({
     const onCheckResult = () => {
         if(textTranslate === model.En)
         {
-            getWordFromLessonByNumber(model.LessonsId, model.WordsCount);
+            getWordFromLessonByNumber(model.LessonsId, model.WordsCount, model);
         }
         else
             setResultCheck(false);

@@ -15,7 +15,8 @@
         en: string = "---",
         ru: string = "---",
         wordsCount: number = 0,
-        lessonsId: number = 0){
+        lessonsId: number = 0,
+        sucssesCount: number = 0){
 
         this.Id = theId;
         this.Lessons = lessons;
@@ -23,6 +24,7 @@
         this.Ru = ru;
         this.WordsCount = wordsCount;
         this.LessonsId = lessonsId;
+        this.SucssesCount = sucssesCount;
     }
 
     public setId(id: string): WordsDTO{
