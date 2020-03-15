@@ -20,7 +20,7 @@ class InCorectWords {
     public setModel(model: WordsDTO) : void 
     {
         console.log("setMode: " + model.SucssesCount);
-        let resultFind = this.listWords.find(f=>f.Id === model.Id);
+        let resultFind = this.listWords.find(f=>f.Id === model.Id || f.En === model.En);
         if(resultFind) return;
         model.SucssesCount = 5;
         this.listWords.push(model);
@@ -37,6 +37,10 @@ class InCorectWords {
 
     public getListWords(): Array<WordsDTO>
     {
+        for(let i = 0; i < this.listWords.length; i++){
+            this.listWords[i].WordsCount = (i+1);
+        }
+
         return this.listWords;
     }
 

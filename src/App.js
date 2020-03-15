@@ -15,6 +15,7 @@ function App() {
         <div className='app-wrapper-content'>
            <Route path='/translateWords/:lesson?' render={() => <TranslateWordsContainer/>} />
            <Route path='/chooseLessons' render={() => <ChooseLessonsContainer/>}/>
+           <Route path='/inCorrectWords/:type?' render={() => <TranslateWordsContainer/>} />
         </div>
 
     </div>

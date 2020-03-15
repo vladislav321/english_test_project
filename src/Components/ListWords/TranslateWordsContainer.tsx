@@ -6,9 +6,10 @@ import {getWordFromLessonByNumber , getNextLesson, getPreviusLesson,
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { AppStateType } from '../../redux/redux-store';
-import {MapStatePropsType, MapDispatchPropsType, OwnPropsType} from  './../../Types/TranslateWords/translate-words-types';
+import {MapStatePropsType, MapDispatchPropsType, OwnPropsType, OwnDispatchPropsType} from  './../../Types/TranslateWords/translate-words-types';
+import { TypeCurrectList } from '../../Enum/TypeCurrectList';
 
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType & OwnDispatchPropsType;
 
 class TranslateWordsContainer extends Component<PropsType> {
 
@@ -16,6 +17,14 @@ class TranslateWordsContainer extends Component<PropsType> {
     componentDidMount()
     {
         console.log("componentDidMount");
+
+        let typeParams = this.props.match.params.type;
+        if(typeParams){
+            this.props.updateCurrectList(typeParams);
+        }else{
+            this.props.updateCurrectList(TypeCurrectList.Currect);
+        }
+
         let lessonsParam = this.props.match.params.lesson;
         if(!lessonsParam){
             this.props.getFirstModel(1);
@@ -39,11 +48,7 @@ class TranslateWordsContainer extends Component<PropsType> {
                 getNextLesson={this.props.getNextLesson}
                 getPreviusLesson={this.props.getPreviusLesson}
                 getWordFromLessonByNumber={this.props.getWordFromLessonByNumber}
-                getFirstModel={this.props.getNextLesson}
-                setWrongWords={this.props.setWrongWords}
-                saveWrongWods={this.props.saveWrongWods}
-                updateCurrectList={this.props.updateCurrectList}
-               />
+                setWrongWords={this.props.setWrongWords}/>
         );
     }
 
