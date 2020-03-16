@@ -21,7 +21,10 @@ class InCorectWords {
     {
         console.log("setMode: " + model.SucssesCount);
         let resultFind = this.listWords.find(f=>f.Id === model.Id || f.En === model.En);
-        if(resultFind) return;
+        if(resultFind){
+            console.log("уже есть: " + model.SucssesCount);
+            return;
+        } 
         model.SucssesCount = 5;
         this.listWords.push(model);
         console.log("setMode: " + model.En);

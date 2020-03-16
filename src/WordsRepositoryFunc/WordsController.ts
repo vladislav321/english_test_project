@@ -4,6 +4,7 @@ class WordsController {
 
     private listWords: Array<WordsDTO> = new Array<WordsDTO>();
     private currentListLesson: Array<WordsDTO> = new Array<WordsDTO>();
+    private listLessons: Array<WordsDTO> = new Array<WordsDTO>();
 
     constructor(listWords: Array<WordsDTO> )
     {
@@ -11,6 +12,7 @@ class WordsController {
 
         this.currentListLesson = this.getListLessonsById(1);
 
+        this.listLessons = this.getLessons();
         console.log("-----WordsController Init contructor ----");
     }
 
@@ -29,19 +31,7 @@ class WordsController {
     }
 
     public getListLessons(): Array<WordsDTO> {
-        let listLessons = new Array<WordsDTO>()
-        let previusLesson = "";
-        let list = this.listWords;
-    
-        for(let i = 0; i < list.length; i++)
-        {
-            if(list[i].Lessons !== previusLesson)
-            {
-                previusLesson = list[i].Lessons;
-                listLessons.push(list[i]);
-            }
-        }
-        return listLessons;
+        return this.listLessons;
     }
 
     public getWordsFromLesson(lessonId: number, wordsCount: number = 0): WordsDTO {
@@ -56,15 +46,33 @@ class WordsController {
     }
 
     public updateListWords(list: Array<WordsDTO>): void {
-        this.listWords = list;
+        this.listWords  = list;
+        this.listLessons = this.getLessons();
     }
 
     private getListLessonsById(lessonId: number): Array<WordsDTO> {
-        return this.listWords.filter(l => l.LessonsId === lessonId);
+        let list = this.listWords.filter(l => l.LessonsId === lessonId);
+        return list;
     }
 
     private getEmptyModel(lessonId:number, wordsCount:number): WordsDTO {
         return new WordsDTO().setId("1").setWordsCount(wordsCount).setLessonId(lessonId);
+    }
+
+    private getLessons(): Array<WordsDTO> {
+        let listLessons = new Array<WordsDTO>()
+        let previusLesson = "";
+        let list = this.listWords;
+    
+        for(let i = 0; i < list.length; i++)
+        {
+            if(list[i].Lessons !== previusLesson)
+            {
+                previusLesson = list[i].Lessons;
+                listLessons.push(list[i]);
+            }
+        }
+        return listLessons;
     }
 }
 

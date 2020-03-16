@@ -1,3 +1,5 @@
+import { InCorrectWordsState } from './../WordsRepositoryFunc/WordsControllerState/InCorrectWordsState';
+import { CorrectWordsState } from './../WordsRepositoryFunc/WordsControllerState/CorrectWordsState';
 import { TypeCurrectList } from './../Enum/TypeCurrectList';
 
 import {GET_WORD_BY_NUMBER,
@@ -13,11 +15,13 @@ import  {WordsController} from '../WordsRepositoryFunc/WordsController';
 import WordsRepository from './../WordsRepositoryFunc/WordsRepository';
 import { InCorectWords } from '../WordsRepositoryFunc/InCorectWords';
 import { WrapperLocalStorage } from '../Model/WrapperLocalStorage/WrapperLocalStorage';
+import { WordsControllerState } from '../WordsRepositoryFunc/WordsControllerState/WordsControllerState';
 
 // -- Init Object --
 
-let wordsController: WordsController = new WordsController(WordsRepository.getInstance().getList());
+//let wordsController: WordsController = new WordsController(WordsRepository.getInstance().getList());
 let inCorectWords: InCorectWords = new InCorectWords(new WrapperLocalStorage());
+let wordsControllerState: WordsControllerState = new CorrectWordsState(WordsRepository.getInstance().getList());
 
 // -- Init Object --
 
@@ -31,16 +35,16 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
     {
         case GET_WORD_BY_NUMBER:
             inCorectWords.decrementSucssesCount(action.model);
-            return {...state, model: wordsController.getWordsFromLesson(action.lessonId, action.number ) };
+            return {...state, model: wordsControllerState.getWordsFromLesson(action.lessonId, action.number ) };
 
         case NEXT_LESSON:
-            return {...state, model: wordsController.getNextLesson(action.lessonId)};
+            return {...state, model: wordsControllerState.getNextLesson(action.lessonId)};
         
         case PREVIUS_LESSON:
-            return {...state, model: wordsController.getPreviusLesson(action.lessonId)};
+            return {...state, model: wordsControllerState.getPreviusLesson(action.lessonId)};
 
         case GET_FIRST_MODEL:
-            return {...state, model: wordsController.getLessonModel( action.lessonId, 0 )}    
+            return {...state, model: wordsControllerState.getLessonModel( action.lessonId, 0 )}    
 
         case SET_WRONG_WORDS:
             inCorectWords.setModel(action.model);
@@ -51,10 +55,15 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
             return state;  
             
         case UPDATE_CURRECT_LIST:
-            if(action.typeList === TypeCurrectList.Currect)
-                wordsController.updateListWords(WordsRepository.getInstance().getList());    
-            else
-                wordsController.updateListWords(inCorectWords.getListWords());
+            if(action.typeList === TypeCurrectList.Currect){
+                wordsControllerState = new CorrectWordsState(WordsRepository.getInstance().getList())
+                //wordsController.updateListWords(WordsRepository.getInstance().getList());    
+            }
+            else{
+                wordsControllerState = new InCorrectWordsState(inCorectWords.getListWords());
+                //wordsController.updateListWords(inCorectWords.getListWords());
+            }
+               
 
             return state;
 
