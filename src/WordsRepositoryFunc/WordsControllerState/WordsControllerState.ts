@@ -1,6 +1,6 @@
 import { WordsDTO } from "../../Model/WordsDTO";
 
-export abstract class WordsControllerState {
+export class WordsControllerState {
 
     public listWords: Array<WordsDTO> = new Array<WordsDTO>();
     public currentListLesson: Array<WordsDTO> = new Array<WordsDTO>();
@@ -8,16 +8,34 @@ export abstract class WordsControllerState {
 
     constructor(listWords:Array<WordsDTO>){
         this.listWords = listWords;
+
+        this.listLessons = this.getLessons();
     }
 
-    abstract getNextLesson(currentLessonId: number): WordsDTO 
-    abstract getPreviusLesson(currentLessonId: number): WordsDTO 
-    abstract getLessonModel(lessonId: number, wordsCount: number): WordsDTO 
-    abstract getWordsFromLesson(lessonId: number, wordsCount: number): WordsDTO 
+    public getNextLesson(currentLessonId: number): WordsDTO {
+        if(currentLessonId < this.listWords.length)
+             return this.getLessonModel(currentLessonId + 1, 0);
+   
+        return this.getLessonModel(1, 0);
+     }
 
-    public getEmptyModel(lessonId:number, wordsCount:number): WordsDTO {
-        return new WordsDTO().setId("1").setWordsCount(wordsCount).setLessonId(lessonId);
-    }
+     public getPreviusLesson(currentLessonId: number): WordsDTO {
+        if(currentLessonId > 1) 
+            return this.getLessonModel(currentLessonId - 1, 0);
+
+        return this.getLessonModel(1, 0);
+     }
+
+     public getLessonModel(lessonId: number, wordsCount: number): WordsDTO {
+        this.currentListLesson = this.getListLessonsById(lessonId);
+        return this.getWordsFromLesson(lessonId, wordsCount);
+     }
+
+    public getWordsFromLesson(lessonId: number, wordsCount: number): WordsDTO {
+        let list = this.currentListLesson;
+        let model = (list.length - 1) < wordsCount ? this.getEmptyModel(lessonId, wordsCount) : list[wordsCount];
+        return model;
+     }
 
     public getListLessons(): Array<WordsDTO> {
         return this.listLessons;
@@ -47,6 +65,10 @@ export abstract class WordsControllerState {
             }
         }
         return listLessons;
+    }
+
+    public getEmptyModel(lessonId:number, wordsCount:number): WordsDTO {
+        return new WordsDTO().setId("1").setWordsCount(wordsCount).setLessonId(lessonId);
     }
 
 }

@@ -57,13 +57,10 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
         case UPDATE_CURRECT_LIST:
             if(action.typeList === TypeCurrectList.Currect){
                 wordsControllerState = new CorrectWordsState(WordsRepository.getInstance().getList())
-                //wordsController.updateListWords(WordsRepository.getInstance().getList());    
             }
             else{
                 wordsControllerState = new InCorrectWordsState(inCorectWords.getListWords());
-                //wordsController.updateListWords(inCorectWords.getListWords());
             }
-               
 
             return state;
 
