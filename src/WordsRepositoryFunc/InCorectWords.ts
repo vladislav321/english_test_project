@@ -40,10 +40,6 @@ class InCorectWords {
 
     public getListWords(): Array<WordsDTO>
     {
-        for(let i = 0; i < this.listWords.length; i++){
-            this.listWords[i].WordsCount = (i+1);
-        }
-
         return this.listWords;
     }
 
