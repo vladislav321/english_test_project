@@ -1,4 +1,5 @@
 import { WordsDTO } from '../Model/WordsDTO';
+import { LessonsSorter } from './LessonsSorter';
 
 class WordsController {
 
@@ -60,19 +61,7 @@ class WordsController {
     }
 
     private getLessons(): Array<WordsDTO> {
-        let listLessons = new Array<WordsDTO>()
-        let previusLesson = "";
-        let list = this.listWords;
-    
-        for(let i = 0; i < list.length; i++)
-        {
-            if(list[i].Lessons !== previusLesson)
-            {
-                previusLesson = list[i].Lessons;
-                listLessons.push(list[i]);
-            }
-        }
-        return listLessons;
+        return new LessonsSorter(this.listWords).getLessons();
     }
 }
 

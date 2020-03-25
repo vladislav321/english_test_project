@@ -11,7 +11,6 @@ import {GET_WORD_BY_NUMBER,
         SetWrongWordsActionType, SaveWrongWordsActionType, UpdateCurrectListActionType} from '../Types/TranslateWords/translate-words-types';
 
 import { WordsDTO } from '../Model/WordsDTO';
-import  {WordsController} from '../WordsRepositoryFunc/WordsController';
 import WordsRepository from './../WordsRepositoryFunc/WordsRepository';
 import { InCorectWords } from '../WordsRepositoryFunc/InCorectWords';
 import { WrapperLocalStorage } from '../Model/WrapperLocalStorage/WrapperLocalStorage';
@@ -38,9 +37,11 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
             return {...state, model: wordsControllerState.getWordsFromLesson(action.lessonId, action.number ) };
 
         case NEXT_LESSON:
+            inCorectWords.saveListInLocalStorage();
             return {...state, model: wordsControllerState.getNextLesson(action.lessonId)};
         
         case PREVIUS_LESSON:
+            inCorectWords.saveListInLocalStorage();
             return {...state, model: wordsControllerState.getPreviusLesson(action.lessonId)};
 
         case GET_FIRST_MODEL:

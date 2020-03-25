@@ -57,6 +57,11 @@
         return this;
     }
 
+    public setSucssesCount(sucssesCount: number): WordsDTO {
+        this.SucssesCount = sucssesCount;
+        return this;
+    }
+
 }
 
 export { WordsDTO };
