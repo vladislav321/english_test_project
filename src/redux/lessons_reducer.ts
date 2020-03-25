@@ -1,11 +1,13 @@
 import { GET_LIST_LESSONS, InitStateType, GetListLessonsActionType } from "../Types/ListLessons/lessons-types";
-import { WordsDTO } from "../Model/WordsDTO";
-import  {WordsController}  from "../WordsRepositoryFunc/WordsController";
 import WordsRepository from "../WordsRepositoryFunc/WordsRepository";
+import { LessonPersent } from "../Model/LessonPersent";
+import { LessonsSorter } from "../WordsRepositoryFunc/LessonsSorter";
+import { InCorectWords } from "../WordsRepositoryFunc/InCorectWords";
+import { WrapperLocalStorage } from "../Model/WrapperLocalStorage/WrapperLocalStorage";
 
 
 let initState: InitStateType = {
-    sortListLessons: Array<WordsDTO>()
+    sortListLessons: Array<LessonPersent>()
 }
 
 const LesssonsReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
@@ -13,7 +15,9 @@ const LesssonsReducer = (state: InitStateType = initState, action: ActionsType):
     switch(action.type)
     {
         case GET_LIST_LESSONS:
-            return {...state, sortListLessons: new WordsController(WordsRepository.getInstance().getList()).getListLessons() }
+                let listWords = WordsRepository.getInstance().getList();
+                let listInCorrectWords = new InCorectWords( new WrapperLocalStorage() ).getListWords();
+               return {...state, sortListLessons: new LessonsSorter(listWords).getListLessonsWithPercet(listInCorrectWords) }
 
         default :
             return state  

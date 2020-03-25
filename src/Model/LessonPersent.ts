@@ -1,13 +1,14 @@
-import { WordsDTO } from "./WordsDTO";
 
 
 class LessonPersent {
 
+    public Id: string;
     public Lesson: string;
     public LessonId: number;
     public Persent: number;
 
-    constructor(lesson: string = "1", lessonId: number = 0, persent: number = 0){
+    constructor(theId: string = "1", lesson: string = "1", lessonId: number = 0, persent: number = 0){
+        this.Id = theId;
         this.Lesson = lesson;
         this.LessonId = lessonId;
         this.Persent = persent;

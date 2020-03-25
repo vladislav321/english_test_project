@@ -1,4 +1,4 @@
-import { WordsDTO } from "../../Model/WordsDTO";
+import { LessonPersent } from "../../Model/LessonPersent";
 
 export const GET_LIST_LESSONS = "GET_LIST_LESSONS";
 
@@ -7,7 +7,7 @@ export type GetListLessonsActionType = {
 }
 
 export type InitStateType = {
-    sortListLessons: Array<WordsDTO>
+    sortListLessons: Array<LessonPersent>
 }
 
 export type MapDispatchPropsType = {
@@ -15,5 +15,5 @@ export type MapDispatchPropsType = {
 }
 
 export type MapStatePropsType = {
-    sortListLessons: Array<WordsDTO>
+    sortListLessons: Array<LessonPersent>
 }

@@ -6,9 +6,10 @@ import ProgressIndicators from '../../common/ProgressIdicators/ProgressIndicator
 type PropsType = {
     lessonId: number
     lesson: string
+    percent: number;
 }
 
-const ItemLessons: React.FC<PropsType> = ({lessonId, lesson}) => {
+const ItemLessons: React.FC<PropsType> = ({lessonId, lesson, percent}) => {
 
     return(
         <div className={style.lessonsItem}>
@@ -20,7 +21,7 @@ const ItemLessons: React.FC<PropsType> = ({lessonId, lesson}) => {
                 </div>
             </NavLink>
             <div  className={style.progressIndecator} >
-                <ProgressIndicators persent={20} />
+                <ProgressIndicators persent={percent} />
             </div>
            
         </div>

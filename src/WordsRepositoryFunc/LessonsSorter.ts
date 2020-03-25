@@ -32,15 +32,20 @@ class LessonsSorter {
         let listPercet = new Array<LessonPersent>();
 
         for(let i = 0; i < listLessons.length;i++) {
+
             let listLessonById = this.list.filter(f => f.LessonsId === listLessons[i].LessonsId);
             let listInCorrectById = listInCorrect.filter(f => f.LessonsId === listLessons[i].LessonsId);
+
+            let model = listLessons[i];
+
             if(listInCorrectById && listInCorrectById.length > 0)
             {
-                listPercet.push(new LessonPersent(listLessons[i].Lessons, listLessons[i].LessonsId, this.getPersent(listLessonById.length, listInCorrectById.length) ));
+                let persent = this.getPersent(listLessonById.length, listInCorrectById.length);
+                listPercet.push(new LessonPersent(model.Id, model.Lessons, model.LessonsId, persent));
             }
             else
             {
-                listPercet.push(new LessonPersent(listLessons[i].Lessons, listLessons[i].LessonsId, 100));
+                listPercet.push(new LessonPersent(model.Id, model.Lessons, model.LessonsId, 100));
             }
             
 

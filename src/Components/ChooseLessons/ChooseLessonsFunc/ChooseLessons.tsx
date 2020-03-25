@@ -9,9 +9,10 @@ const ChooseLessons: React.FC<PropsType> = ({sortListLessons}) => {
     console.log(sortListLessons)
         let listLessons = sortListLessons.map( p => 
             <ItemLessons 
-                lesson={p.Lessons}
-                lessonId={p.LessonsId} 
-                key={p.Id}/>);
+                lesson={p.Lesson}
+                lessonId={p.LessonId} 
+                key={p.Id}
+                percent={p.Persent}/>);
 
         return(
             <div className={style.scroolBlock}>
