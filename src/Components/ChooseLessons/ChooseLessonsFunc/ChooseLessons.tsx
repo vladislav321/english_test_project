@@ -12,7 +12,7 @@ const ChooseLessons: React.FC<PropsType> = ({sortListLessons}) => {
                 lesson={p.Lesson}
                 lessonId={p.LessonId} 
                 key={p.Id}
-                percent={p.Persent}/>);
+                percent={p.Percent}/>);
 
         return(
             <div className={style.scroolBlock}>
