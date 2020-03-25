@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import TranslateWords from './TranslateWords';
 import { connect } from 'react-redux';
 import {getWordFromLessonByNumber , getNextLesson, getPreviusLesson, 
-    getFirstModel, setWrongWords, saveWrongWods, updateCurrectList} from '../../redux/translate_words_reducer';
+    getFirstModel, setWrongWords, saveWrongWods, updateCurrectList, 
+    getNextWord, getPreviusWord} from '../../redux/translate_words_reducer';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { AppStateType } from '../../redux/redux-store';
@@ -42,13 +43,16 @@ class TranslateWordsContainer extends Component<PropsType> {
     }
 
     render(){
+
         return(
             <TranslateWords 
                 model={this.props.model}
                 getNextLesson={this.props.getNextLesson}
                 getPreviusLesson={this.props.getPreviusLesson}
                 getWordFromLessonByNumber={this.props.getWordFromLessonByNumber}
-                setWrongWords={this.props.setWrongWords}/>
+                setWrongWords={this.props.setWrongWords}
+                getNextWord={this.props.getNextWord}
+                getPreviusWord={this.props.getPreviusWord}/>
         );
     }
 
@@ -59,5 +63,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 });
 
 export default compose( connect(mapStateToProps, 
-    {getWordFromLessonByNumber, getNextLesson, getPreviusLesson, getFirstModel, setWrongWords, saveWrongWods, updateCurrectList} ),
+    {getWordFromLessonByNumber, getNextLesson, getPreviusLesson, getFirstModel, 
+        setWrongWords, saveWrongWods, updateCurrectList, getNextWord, getPreviusWord} ),
 withRouter )(TranslateWordsContainer);

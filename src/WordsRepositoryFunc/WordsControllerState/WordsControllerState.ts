@@ -26,6 +26,20 @@ export class WordsControllerState {
         return this.getLessonModel(1, 0);
      }
 
+     public getNextWord(currentLessonId: number, currentWordCount: number): WordsDTO {
+        if(currentWordCount < this.currentListLesson.length) 
+            return this.getWordsFromLesson(currentLessonId, currentWordCount);
+       
+        return this.getEmptyModel(currentLessonId, 0);
+     }
+
+     public getPreviusWord(currentLessonId: number, currentWordCount: number): WordsDTO {
+        if(currentLessonId > 1) 
+            return this.getWordsFromLesson(currentLessonId, currentWordCount - 1);
+
+        return this.getWordsFromLesson(currentLessonId, 0);
+     }
+
      public getLessonModel(lessonId: number, wordsCount: number): WordsDTO {
         this.currentListLesson = this.getListLessonsById(lessonId);
         return this.getWordsFromLesson(lessonId, wordsCount);

@@ -1,4 +1,3 @@
-import { getWordFromLessonByNumber } from './../../redux/translate_words_reducer';
 import { TypeCurrectList } from './../../Enum/TypeCurrectList';
 import { WordsDTO } from "../../Model/WordsDTO";
 
@@ -9,6 +8,8 @@ export const GET_FIRST_MODEL = "GET_FIRST_MODEL";
 export const SET_WRONG_WORDS = "SET_INCURRECT_WORDS";
 export const SAVE_WRONG_WORDS = "SAVE_WRONG_WORDS";
 export const UPDATE_CURRECT_LIST = "UPDATE_CURRECT_LIST";
+export const GET_NEXT_WORD = "GET_NEXT_WORD";
+export const GET_PREVIUS_WORD = "GET_PREVIUS_WORD";
 
 export type InitStateType = {
     model: WordsDTO
@@ -20,6 +21,17 @@ export type GetWordFromLessonByNumberActionTypes = {
     number: number,
     model: WordsDTO
 }
+
+type NextWordKey = { type: typeof GET_NEXT_WORD }
+type PreviusWordKey = { type: typeof GET_PREVIUS_WORD }
+type ParamsMoveWord = {
+    lessonId: number,
+    wordCount: number
+}
+
+export type GetNextWordAT = NextWordKey & ParamsMoveWord;
+export type GetPreviusWordAT = PreviusWordKey & ParamsMoveWord;
+
 
 export type GetNextLessonActionTypes = {
     type: typeof NEXT_LESSON,
@@ -59,6 +71,8 @@ export type MapDispatchPropsType = {
     getNextLesson: (lessonId: number) => void
     getPreviusLesson: (lessonId: number) => void
     setWrongWords: (model: WordsDTO) => void
+    getNextWord: (lessonId: number, wordsCount: number) => void;
+    getPreviusWord: (lessonId: number, wordsCount: number) => void;
 }
 
 export type OwnPropsType = {
