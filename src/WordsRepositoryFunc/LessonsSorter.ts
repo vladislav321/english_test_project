@@ -56,6 +56,7 @@ class LessonsSorter {
 
     public getPersent(lessonListSize: number, inCorrectListSize: number ): number {
         let result = (inCorrectListSize * 100) / lessonListSize;
+        debugger;
         return Math.round( result );
     }
 

@@ -45,6 +45,7 @@ const TranslateWordsReducer = (state: InitStateType = initState, action: Actions
             return {...state, model: wordsControllerState.getPreviusLesson(action.lessonId)};
 
         case GET_FIRST_MODEL:
+            console.log("GET_FIRST_MODEL : qwe")
             return {...state, model: wordsControllerState.getLessonModel( action.lessonId, 0 )}    
 
         case SET_WRONG_WORDS:

@@ -6,6 +6,8 @@ import {SET_LIST_WORDS, SetListActionType,
         InitStateType} from './TypesRedux/list-words-types';
 import { WordsDTO } from "../Model/WordsDTO";
 import WordsRepository from "../WordsRepositoryFunc/WordsRepository";
+import { InCorectWords } from "../WordsRepositoryFunc/InCorectWords";
+import { WrapperLocalStorage } from "../Model/WrapperLocalStorage/WrapperLocalStorage";
 
 
 
@@ -26,6 +28,8 @@ const ListWordsReducer = (state : InitStateType = initState , action: ActionsTyp
             return {...state, words: WordsRepository.getInstance().getList() };
 
         case CLEAR_LIST_REPO:
+            let inCorrectWords = new InCorectWords( new WrapperLocalStorage() );
+            inCorrectWords.clearRepo();
             WordsRepository.getInstance().clearRepo();    
             return state;
         

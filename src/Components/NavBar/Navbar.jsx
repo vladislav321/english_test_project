@@ -19,13 +19,13 @@ const Navbar = () =>{
             </span>
           </NavLink>
         </div>
-        <div className={s.item}>
+        {/* <div className={s.item}>
           <NavLink to="/inCorrectWords/InCurrect" activeClassName={s.active}>
             <span>
                InCorrect Words
             </span>
           </NavLink>
-        </div>
+        </div> */}
     </nav>
     );
 }

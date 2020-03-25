@@ -11,15 +11,11 @@ class InCorectWords {
     constructor(wrapperLocalStorage: IWrapperLocalStorage)
     {
         this.wrapperLocalStorage = wrapperLocalStorage;
-        console.log("--- NotKnowledgeOfWords constructor --")
         this.initList();
-
-        console.log("--- list words --" + this.listWords.length);
     }
 
     public setModel(model: WordsDTO) : void 
     {
-        console.log("setMode: " + model.SucssesCount);
         let resultFind = this.listWords.find(f=>f.Id === model.Id || f.En === model.En);
         if(resultFind){
             console.log("уже есть: " + model.SucssesCount);
@@ -34,8 +30,6 @@ class InCorectWords {
       
         if(model.SucssesCount > 0) 
              model.SucssesCount = model.SucssesCount - 1;
-
-        console.log("decrementSucssesCount: " + model.SucssesCount);
     }
 
     public getListWords(): Array<WordsDTO>
@@ -50,9 +44,14 @@ class InCorectWords {
         this.wrapperLocalStorage.setItem(this.keyLocalStorage, JSON.stringify(this.listWords))
     }
 
+    public clearRepo(): void {
+        this.wrapperLocalStorage.removeItem(this.keyLocalStorage);
+    }
+
     private initList(): void 
     {
         let strJson = this.wrapperLocalStorage.getItem(this.keyLocalStorage);
+       
         if(!strJson) return;
 
         this.listWords = JSON.parse(strJson);
