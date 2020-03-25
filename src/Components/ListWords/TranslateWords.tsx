@@ -39,7 +39,18 @@ const ListWords: React.FC<PropsType> = ({
         }
 
     const hendleKeyDoew = (e:any) => {
+        console.log("e.key: " + e.key)
         if(e.key === 'Enter') onCheckResult();
+        if(e.key === 'ArrowUp') getNextLesson(model.LessonsId);
+        if(e.key === 'ArrowDown') getPreviusLesson(model.LessonsId);
+        if(e.key === 'ArrowRight'){
+
+        }
+
+        if(e.key === 'ArrowLeft'){
+            
+        }
+
     }
     
     return(
