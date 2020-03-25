@@ -55,8 +55,13 @@ class LessonsSorter {
     }
 
     public getPersent(lessonListSize: number, inCorrectListSize: number ): number {
-        let result = (inCorrectListSize * 100) / lessonListSize;
-        debugger;
+        let resultPercent = (inCorrectListSize * 100) / lessonListSize;
+
+        if(resultPercent > 100)
+            resultPercent = 100;
+
+        let result = 100 - resultPercent;
+
         return Math.round( result );
     }
 

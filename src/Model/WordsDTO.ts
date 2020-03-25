@@ -10,7 +10,7 @@
     public SucssesCount: number = 0;
 
     constructor(
-        theId: string = "---",
+        theId: string = "1",
         lessons: string = "---",
         en: string = "---",
         ru: string = "---",
