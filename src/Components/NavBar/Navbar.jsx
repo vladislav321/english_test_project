@@ -26,6 +26,14 @@ const Navbar = () =>{
             </span>
           </NavLink>
         </div>
+
+        <div className={s.item}>
+          <NavLink to="/reversTranslate" activeClassName={s.active}>
+            <span>
+               Translate En into Ru
+            </span>
+          </NavLink>
+        </div>
     </nav>
     );
 }
