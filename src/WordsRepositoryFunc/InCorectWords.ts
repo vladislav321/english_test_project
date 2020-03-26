@@ -1,5 +1,6 @@
 import { IWrapperLocalStorage } from '../Model/WrapperLocalStorage/IWrapperLocalStarage';
 import { WordsDTO } from "../Model/WordsDTO";
+import WordsRepository from './WordsRepository';
 
 class InCorectWords {
 
@@ -46,6 +47,18 @@ class InCorectWords {
     public saveListInLocalStorage(): void 
     {
         this.listWords = this.listWords.filter(f=> f.SucssesCount !== 0);
+
+        //need rewrite code
+        let allListWords = WordsRepository.getInstance().getList();
+        for(let i=0; i < this.listWords.length; i++){
+            let listWord = this.listWords[i];
+            let word = allListWords.find(f=>f.Id === listWord.Id);
+
+            if(!word) return;
+            listWord.LessonsId = word.LessonsId;
+            listWord.WordsCount = word.WordsCount;
+        }
+
         console.log("---saveListInLocalStorage---")
         this.wrapperLocalStorage.setItem(this.keyLocalStorage, JSON.stringify(this.listWords))
     }
