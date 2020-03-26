@@ -16,29 +16,17 @@ export class InCorrectWordsState extends WordsControllerState {
 
         this.SetSortList(listWords);
         console.log(listWords);
-        console.log("----- InCorrectWordsState constructor-----")
+        
     }
 
      private SetSortList(list: Array<WordsDTO>){
-
-        let sortingList = new Array<WordsDTO>();
-
-        for(let i = 0; i < this.listLessons.length; i++){
-
-            let listByLessons = new Array<WordsDTO>(); 
-            listByLessons = this.listWords.filter(f => f.LessonsId === this.listLessons[i].LessonsId);
-
-            for(let l = 0; l < listByLessons.length; l++){
-
-                listByLessons[l].LessonsId = (i + 1)
-                listByLessons[l].WordsCount = (l + 1)
-
-                sortingList.push(listByLessons[l]);
-            }
+        for(let i = 0; i < this.listWords.length; i++)
+        {
+            this.listWords[i].LessonsId = 1;
+            this.listWords[i].WordsCount = (i + 1);
         }
 
-        if(sortingList.length > 0){
-            this.updateListWords(sortingList);
-        }
+        this.updateListWords(this.listWords);
+        
     }
 }

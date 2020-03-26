@@ -21,18 +21,18 @@ test('Test LessonSorter getListLessonsWithPercet', () => {
 
     let expectation = new Array<LessonPersent>();
     
-    expectation.push(new LessonPersent().setLessons("1").setLessonsId(1).setPersent(70));
-    expectation.push(new LessonPersent().setLessons("2").setLessonsId(2).setPersent(80));
-    expectation.push(new LessonPersent().setLessons("3").setLessonsId(3).setPersent(60));
-    expectation.push(new LessonPersent().setLessons("4").setLessonsId(4).setPersent(100));
+    expectation.push(new LessonPersent().setLessons("1").setLessonsId(1).setPercent(70));
+    expectation.push(new LessonPersent().setLessons("2").setLessonsId(2).setPercent(80));
+    expectation.push(new LessonPersent().setLessons("3").setLessonsId(3).setPercent(60));
+    expectation.push(new LessonPersent().setLessons("4").setLessonsId(4).setPercent(100));
 
 
-    //expect(action[0]).toStrictEqual(expectation[0]);
+    expect(action[0]).toStrictEqual(expectation[0]);
     expect(action[1]).toStrictEqual(expectation[1]);
     expect(action[2]).toStrictEqual(expectation[2]);
     expect(action[3]).toStrictEqual(expectation[3]);
 
-    //expect(action.length).toBe(expectation.length);
+    expect(action.length).toBe(expectation.length);
 
     
 

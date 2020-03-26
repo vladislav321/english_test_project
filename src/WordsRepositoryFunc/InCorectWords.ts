@@ -28,8 +28,14 @@ class InCorectWords {
 
     public decrementSucssesCount(model: WordsDTO):void {
       
-        if(model.SucssesCount > 0) 
-             model.SucssesCount = model.SucssesCount - 1;
+        if(model.SucssesCount > 0) {
+            let modelInCorrect = this.listWords.find(f=>f.Id === model.Id);
+
+            if(!modelInCorrect) return
+
+            modelInCorrect.SucssesCount = model.SucssesCount - 1;
+            console.log("decrementSucssesCount: " + modelInCorrect.En);
+        }
     }
 
     public getListWords(): Array<WordsDTO>

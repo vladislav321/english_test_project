@@ -67,6 +67,24 @@ class MockListWords {
         return list;
     }
 
+    public getCorrectSortList():Array<WordsDTO>{
+        let list = new Array<WordsDTO>();
+
+        list.push( this.getModel("5", 1, 1));
+        list.push( this.getModel("9", 2, 1));
+        list.push( this.getModel("11", 3, 1));
+        list.push( this.getModel("13", 4, 1));
+        list.push( this.getModel("7", 5, 1));
+
+        list.push( this.getModel("2", 6, 1));
+        list.push( this.getModel("3", 7, 1));
+        list.push( this.getModel("22", 8, 1));
+        list.push( this.getModel("33", 9, 1));
+        list.push( this.getModel("10", 10,  1));
+
+        return list;
+    }
+
     public getModel(lessons: string, wordsCount: number, lessonsId: number): WordsDTO {
         return new WordsDTO().setLesson(lessons).setWordsCount(wordsCount).setLessonId(lessonsId);
     }
