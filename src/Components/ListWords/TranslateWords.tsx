@@ -42,10 +42,10 @@ const ListWords: React.FC<PropsType> = ({
     const hendleKeyDoew = (e:any) => {
         console.log("e.key: " + e.key)
         if(e.key === 'Enter') onCheckResult();
-        if(e.key === 'ArrowUp') getNextLesson(model.LessonsId);
-        if(e.key === 'ArrowDown') getPreviusLesson(model.LessonsId);
-        if(e.key === 'ArrowRight') getNextWord(model.LessonsId, model.WordsCount);
-        if(e.key === 'ArrowLeft') getPreviusWord(model.LessonsId, model.WordsCount);
+        // if(e.key === 'ArrowUp') getNextLesson(model.LessonsId);
+        // if(e.key === 'ArrowDown') getPreviusLesson(model.LessonsId);
+        if(e.key === 'ArrowUp') getNextWord(model.LessonsId, model.WordsCount);
+        if(e.key === 'ArrowDown') getPreviusWord(model.LessonsId, model.WordsCount);
 
     }
     
