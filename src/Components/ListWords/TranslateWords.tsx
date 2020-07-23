@@ -10,12 +10,12 @@ const ListWords: React.FC<PropsType> = ({
 
     let [isShowTranslate, setShowTranslate] = useState(false);
     let [textTranslate, setTextTranslate] = useState("");
-    let [resultCheck, setResultCheck] = useState(true);
+    let [resultCheck, setResultCheck] = useState(false);
 
     useEffect( () => {
         setShowTranslate(false);
         setTextTranslate("");
-        setResultCheck(true);
+        setResultCheck(false);
     }, [model] );
 
    
@@ -33,7 +33,15 @@ const ListWords: React.FC<PropsType> = ({
     const onCheckResult = () => {
         if(textTranslate === model.En)
         {
-            getWordFromLessonByNumber(model.LessonsId, model.WordsCount, model);
+            if(!isShowTranslate){
+                setShowTranslate(true);
+            }
+            
+            if(resultCheck === true || isShowTranslate){
+                getWordFromLessonByNumber(model.LessonsId, model.WordsCount, model);
+            }
+
+            setResultCheck(true);
         }
         else
             setResultCheck(false);
