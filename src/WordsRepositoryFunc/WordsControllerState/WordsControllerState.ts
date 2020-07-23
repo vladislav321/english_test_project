@@ -28,7 +28,7 @@ export class WordsControllerState {
 
      public getNextWord(currentLessonId: number, currentWordCount: number): WordsDTO {
         if(currentWordCount < this.currentListLesson.length) 
-            return this.getWordsFromLesson(currentLessonId, currentWordCount);
+            return this.getWordsFromLesson(currentLessonId, currentWordCount + 1);
        
         return this.getEmptyModel(currentLessonId, 0);
      }
@@ -47,8 +47,12 @@ export class WordsControllerState {
 
     public getWordsFromLesson(lessonId: number, wordsCount: number): WordsDTO {
         let list = this.currentListLesson;
-        let model = (list.length - 1) < wordsCount ? this.getEmptyModel(lessonId, wordsCount) : list[wordsCount];
-        return model;
+        
+        let model = list.find(f=>f.WordsCount === wordsCount);
+        if(model)
+            return model;
+       
+        return list[0];
      }
 
     public getListLessons(): Array<WordsDTO> {
